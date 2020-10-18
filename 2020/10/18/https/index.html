@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tsungjen.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言TCP &#x2F; IP TCP：可以把很巨大的資料封包切割，切割成小塊小塊的，當接收時會check是否全部都收到像是ikea家具組合包，分裝4包，同一IP位址，TCP可以確認是否4包 IP：比較單純，就是告訴說，我這個資料封包要送到哪裡去，IP位址像是物流包裹，一個包裹一個 IP 位址 DNS： 透過 DNS 把網址轉成 IP   後端運作流程： https:&#x2F;&#x2F;github.com&#x2F;for-Get">
+<meta property="og:type" content="article">
+<meta property="og:title" content="https">
+<meta property="og:url" content="https://tsungjen.github.io/2020/10/18/https/index.html">
+<meta property="og:site_name" content="洋蔥的前端筆記">
+<meta property="og:description" content="前言TCP &#x2F; IP TCP：可以把很巨大的資料封包切割，切割成小塊小塊的，當接收時會check是否全部都收到像是ikea家具組合包，分裝4包，同一IP位址，TCP可以確認是否4包 IP：比較單純，就是告訴說，我這個資料封包要送到哪裡去，IP位址像是物流包裹，一個包裹一個 IP 位址 DNS： 透過 DNS 把網址轉成 IP   後端運作流程： https:&#x2F;&#x2F;github.com&#x2F;for-Get">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e74f7bef-e5b6-45b7-a208-bc5734e5cae5/_2020-10-09_12.06.05.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f5d77a45-a917-43c2-8ac6-65c2604852a8/_2020-10-09_12.19.33.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3dd8deae-d4c1-43b7-8f54-6ffb8fa61f66/_2020-10-09_12.22.20.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d8a956d0-0e6f-44cb-9d35-36babb9d9942/_2020-10-09_12.32.44.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1b4535e4-30c0-4ed1-93b2-0daaa3b11058/_2020-10-09_12.37.22.png">
+<meta property="article:published_time" content="2020-10-18T06:36:12.000Z">
+<meta property="article:modified_time" content="2020-10-18T06:36:39.624Z">
+<meta property="article:author" content="Mike">
+<meta property="article:tag" content="前端,後端,全端,網頁,技術,網頁開發,前端開發,後端開發,JavaScript,HTML,CSS,SCSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e74f7bef-e5b6-45b7-a208-bc5734e5cae5/_2020-10-09_12.06.05.png">
+
+<link rel="canonical" href="https://tsungjen.github.io/2020/10/18/https/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>https | 洋蔥的前端筆記</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="洋蔥的前端筆記" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">洋蔥的前端筆記</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">歡迎來到 Mike 的前端世界。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://tsungjen.github.io/2020/10/18/https/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mike">
+      <meta itemprop="description" content="?‍?F2E-Front End Engineer <br/> 歡迎來到網頁世界">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="洋蔥的前端筆記">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          https
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2020-10-18 14:36:12 / 修改時間：14:36:39" itemprop="dateCreated datePublished" datetime="2020-10-18T14:36:12+08:00">2020-10-18</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>TCP / IP</p>
+<p>TCP：可以把很巨大的資料封包切割，切割成小塊小塊的，當接收時會check是否全部都收到<br>像是ikea家具組合包，分裝4包，同一IP位址，TCP可以確認是否4包</p>
+<p>IP：比較單純，就是告訴說，我這個資料封包要送到哪裡去，IP位址<br>像是物流包裹，一個包裹一個 IP 位址</p>
+<p>DNS：</p>
+<p>透過 DNS 把網址轉成 IP </p>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e74f7bef-e5b6-45b7-a208-bc5734e5cae5/_2020-10-09_12.06.05.png" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e74f7bef-e5b6-45b7-a208-bc5734e5cae5/_2020-10-09_12.06.05.png"></p>
+<p>後端運作流程：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/for-Get/http-decision-diagram/tree/master/doc">https://github.com/for-Get/http-decision-diagram/tree/master/doc</a></p>
+<p>http Header 種類：兩種</p>
+<p>一個請求，一個回應。</p>
+<p>Request Header：</p>
+<p>Response Header：</p>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f5d77a45-a917-43c2-8ac6-65c2604852a8/_2020-10-09_12.19.33.png" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f5d77a45-a917-43c2-8ac6-65c2604852a8/_2020-10-09_12.19.33.png"></p>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3dd8deae-d4c1-43b7-8f54-6ffb8fa61f66/_2020-10-09_12.22.20.png" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3dd8deae-d4c1-43b7-8f54-6ffb8fa61f66/_2020-10-09_12.22.20.png"></p>
+<p>Request format：</p>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d8a956d0-0e6f-44cb-9d35-36babb9d9942/_2020-10-09_12.32.44.png" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d8a956d0-0e6f-44cb-9d35-36babb9d9942/_2020-10-09_12.32.44.png"></p>
+<p>Http Method 請求方法</p>
+<p>Get：像是寄明信片一樣，大小是有限制的（有限制上限）</p>
+<p>Post：像是包裹，箱子不夠，再拿箱子，分很多相去寄</p>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1b4535e4-30c0-4ed1-93b2-0daaa3b11058/_2020-10-09_12.37.22.png" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1b4535e4-30c0-4ed1-93b2-0daaa3b11058/_2020-10-09_12.37.22.png"></p>
+<h2 id="Request-Header"><a href="#Request-Header" class="headerlink" title="Request Header"></a>Request Header</h2><p>Status code：一個狀態，各自描述</p>
+<p>Host：瀏覽器存取的Host名稱，因為IP可以綁定多個不同Domin，此時就需要Host知道要對應哪一個伺服器</p>
+<p>User-Agent：瀏覽器名稱和版本＆作業系統名稱和版本</p>
+<p>Accept -Encoding：</p>
+<p>瀏覽器支援的壓縮格式，大部分瀏覽器都支援gzip，伺服器則會壓縮內容後傳給伺服器，節省下載時間和寬頻</p>
+<p>Date：傳送瀏覽器時間給伺服器，讓伺服器知道瀏覽器目前時間</p>
+<p>Except：要求伺服器回應特定結果，期望可以給想要的結果，但最終還是由伺服器決定<br>ex:100-continue</p>
+<p>If-Motified-since：</p>
+<p>瀏覽器cache名稱，下一次request會發送此header，伺服器使用這個名稱來判斷是否修改過檔案，沒有則回傳304，If-Motified-since（時間）、If-None-Match（hash code）</p>
+<p>Cookie：把瀏覽器cookie傳給伺服器，每一個request都包含cookie</p>
+<p>Referer：瀏覽器前一個瀏覽頁面的網址，可用此Header判斷request的來源，但不可靠，因為可能被遭到串改</p>
+<p>Connection：可以設定keep-Alive，保持連線時間，減少重新連接TCP連線次數，提高傳輸效率</p>
+<p>Content-Type：指傳送內容的格式，常見格式為</p>
+<ol>
+<li>application/x-www-formurlencoded：有使用form表單或下拉式選單</li>
+<li>multipart/form-data ;boundary=—xxx：檔案上傳</li>
+<li>text/plain</li>
+</ol>
+<p>Authorization：Http連線的身份驗證</p>
+<h2 id="Response-Header："><a href="#Response-Header：" class="headerlink" title="Response Header："></a>Response Header：</h2><p>Etag：產生檔案的hash code給瀏覽器，下一次瀏覽可以傳送If-None-Match給伺服器判斷是否有修改過檔案，沒有則回傳304，並且不會包含content</p>
+<p>Last-Motified：回傳檔案最後的修改時間，下一次瀏覽可以傳送 If-Motified-since 給伺服器判斷是否有修改過檔案，沒有則回傳304，並且不會包含content</p>
+<p>Catch-Control：快取檔案的策略，max-age則表示該檔案有效的cache秒數，no-cache則表示不使用快取</p>
+<p>Content-Type：回傳content的mime類型，當Content-Type設為text/plain可同時設定charset文字編碼格式，若無Content-Type，瀏覽器會自動判斷</p>
+<p>Content-Disposition：讓瀏覽器可以打開下載視窗，並且指定檔案名稱，例如，<br>Content-Disposition:attachment;filename=”download.zip”</p>
+<p>Content-length：取得下載傳送內容的大小，讓瀏覽器可以判斷下載速度</p>
+<p>Date：傳送伺服器時間給瀏覽器，讓瀏覽器知道伺服器目前時間</p>
+<p>Location：當狀態碼為301或302時，瀏覽器會重新導向到Loaction這個位址</p>
+<p>Set-cookie：設定瀏覽器的cookie，當瀏覽器收到此Header，則會建立cookie在瀏選器中</p>
+<p>Content -Encoding：回傳內容的壓縮格式，讓瀏覽器知道改如何解壓縮內容</p>
+<p>Access-Control-Allow-Origin：准許跨域存取的Domin，全部網域使用*字號表示，script和link標籤不在此限<br>解決方法：請後端設定這個或是使用jsonp，把json檔案轉成javascript，call某function的javascript。</p>
+<p>X-Frame-Options：不能夠在<frame>、<iframe>以及<object>載入，網站可以利用X-Frame-Options來確保本身內容不會遭惡意嵌入到其他網站，避免clickjacking攻擊</p>
+<p>Upgrade：確認升級到新的協定，此時的connection會同時回應upgrade。<br>ex:connection:upgrade Upgrade:websocket</p>
+<h2 id="Status-code-分類"><a href="#Status-code-分類" class="headerlink" title="Status code 分類"></a>Status code 分類</h2><p>五種：</p>
+<ol>
+<li>1XX 訊息類（收到請求，請求者繼續執行操作）</li>
+<li>2XX 成功類（操作被成功接受並處理）</li>
+<li>3XX 重定向類（需進一步操作才能完成）ex:轉址</li>
+<li>4XX 客戶端錯誤類（請求無法錯誤或無法完成請求）</li>
+<li>5XX 伺服器錯誤類（後端問題）</li>
+</ol>
+<h2 id="Http-Cats（圖形記憶法）"><a href="#Http-Cats（圖形記憶法）" class="headerlink" title="Http Cats（圖形記憶法）"></a>Http Cats（圖形記憶法）</h2><h2 id="常見Status-code"><a href="#常見Status-code" class="headerlink" title="常見Status code"></a>常見Status code</h2><ol>
+<li>100 （continue）：繼續、serve期望收到更多資訊，以進行完整處理，通常多半是Request的Header有帶Exepet要求回應100</li>
+<li>101（switching Protocols）：用在websocket初始化，然後切換到TCP連線，進行雙向資料傳輸</li>
+<li>200（ok）：最常見的狀態馬，表示請求正常</li>
+<li>301（Moved Permanently）：永久移動到新的網址，同時需要有Location 的Header，SEO會被更新</li>
+<li>302（Found）：找到網址，同時需要有Location 的Header，SEO不會被更新</li>
+<li>304（Not Motified）：為修改，回應不包含content</li>
+<li>307（Temporary Redirect）：暫時重新導向，與302很類似，但302如果從POST進來，會改從GET導向網址，307則不會變更請求方式</li>
+<li>308（Permanent Redirect）：永久重新導向，類似於301，就好比302與307之間關係，不會變更請求方法，SEO會被更新</li>
+<li>401（Unauthorizied）：為驗證拒絕存取</li>
+<li>403（Forbidden）：伺服器接受請求，但拒絕處理</li>
+<li>404（Not Found）：伺服器找不到要求的網頁</li>
+<li>413（Request Entity Toolarge）：通常是GET使用Url超過上限大小，伺服器無法處理</li>
+<li>500（Internal Server Error）：伺服器發生錯誤，通常是後端程式有問題</li>
+<li>503（Service Unavailable）：伺服器維護或過載，伺服器當前無法處理請求</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/16/%EF%BC%AA%EF%BC%B3%E4%BD%9C%E5%93%81%E5%AF%A6%E6%88%B0%E7%8F%AD%E5%BF%83%E5%BE%97/" rel="prev" title="2020六角學院ＪＳ作品實戰班心得">
+      <i class="fa fa-chevron-left"></i> 2020六角學院ＪＳ作品實戰班心得
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Request-Header"><span class="nav-number">2.</span> <span class="nav-text">Request Header</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Response-Header%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">Response Header：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Status-code-%E5%88%86%E9%A1%9E"><span class="nav-number">4.</span> <span class="nav-text">Status code 分類</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Http-Cats%EF%BC%88%E5%9C%96%E5%BD%A2%E8%A8%98%E6%86%B6%E6%B3%95%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">Http Cats（圖形記憶法）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A6%8BStatus-code"><span class="nav-number">6.</span> <span class="nav-text">常見Status code</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mike</p>
+  <div class="site-description" itemprop="description">?‍?F2E-Front End Engineer <br/> 歡迎來到網頁世界</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mike</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
