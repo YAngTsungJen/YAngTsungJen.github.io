@@ -3,7 +3,28 @@
   <entry>
     <title>JS 衝刺班心得分享</title>
     <url>/2021/04/15/JS-%E8%A1%9D%E5%88%BA%E7%8F%AD%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="JS-直播班心得分享"><a href="#JS-直播班心得分享" class="headerlink" title="JS 直播班心得分享"></a>JS 直播班心得分享</h1><p><img src="https://images.unsplash.com/photo-1483859562288-7f9e4c80c1cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1961&q=80"></p>
+<h2 id="不跨出舒適圈，怎麼知道自己的極限在哪？"><a href="#不跨出舒適圈，怎麼知道自己的極限在哪？" class="headerlink" title="不跨出舒適圈，怎麼知道自己的極限在哪？"></a>不跨出舒適圈，怎麼知道自己的極限在哪？</h2><p>你有沒有跟我一樣的問題？</p>
+<p>迷茫著<br>在程式路上，如行屍走肉般</p>
+<p>或許是沒有找到方向，那我給你跟我一樣的選擇，加入六角大家庭吧。</p>
+<p>學習過程中，不知不覺，喜歡上程式這個領域，過去一年自己總是悶著頭，一股腦兒栽在電腦前，東摸摸，西摸摸，很沒有時間觀念的學習程式，我也不知道我到底在幹嘛？<br>直到最近，我慢慢意識到我總不能無限制的自我學習，因此很果斷的加入這次的 JS 直播班。</p>
+<p>因為我知道自己有一個毛病，欠人在屁股後面追著你跑。</p>
+<p>若還在猶豫是否要加入？<br>很抱歉，我寫不出可以讓你心動的文字，只有參加過才知道，是否值得。<br>我的回答：很值得。</p>
+<span id="more"></span>
+
+<h3 id="這兩個月到底學會什麼？"><a href="#這兩個月到底學會什麼？" class="headerlink" title="這兩個月到底學會什麼？"></a>這兩個月到底學會什麼？</h3><p>在這之前，已經先自己學習了 JＳ，所以一到四週基礎的課程還算好吸收，但在第五週之後，開始漸漸有難度了。</p>
+<p>第六堂：AJAX 操控伺服器之術<br>因為我對於 api 串接並沒有特別熟悉，所以就開始天天練習串接 api ，把寫法練到熟為止。課堂中，老師時常會以幽默風趣口吻，來做講解，所以偶爾能用這些零碎時間把不懂地方，馬上做即時發問。</p>
+<p>第七堂：第三方 JS 套件整合之術<br>這是我覺得這次課程中最難部分，在整合C3.js套件時，我必須先把 API 的資料做資料處理，考驗的是對於物件、陣列的整合運用。所以陣列、物件若不熟悉，沒有融會貫通，通常是會在這裡大大卡關。</p>
+<p>第八、九堂：API 講解<br>主要是對於 api 方法操控，考驗的是購物車的資料增加、刪除、修改及後端資料串接。<br>因此，只要能熟練的把 todoList 的範例，靈活寫出來，對於其他大大小小的串接專案，或許都不是問題了。</p>
+<p>推薦的理由呢？</p>
+<h4 id="優勢在哪："><a href="#優勢在哪：" class="headerlink" title="優勢在哪："></a>優勢在哪：</h4><p>我想用圖片說明，可以更有信服力。</p>
+<h5 id="助教作業海…XD"><a href="#助教作業海…XD" class="headerlink" title="助教作業海…XD"></a>助教作業海…XD</h5><p><img src="https://i.imgur.com/fvkLhwF.png"></p>
+<h5 id="解每日任務"><a href="#解每日任務" class="headerlink" title="解每日任務"></a>解每日任務</h5><p><img src="https://i.imgur.com/3FmKO1l.png"></p>
+<h5 id="BMI-kata-盛況"><a href="#BMI-kata-盛況" class="headerlink" title="BMI kata 盛況"></a>BMI kata 盛況</h5><p><img src="https://i.imgur.com/elaBu3y.png"></p>
+<h5 id="小組任務討論"><a href="#小組任務討論" class="headerlink" title="小組任務討論"></a>小組任務討論</h5><p><img src="https://i.imgur.com/VkFuCpv.png"></p>
+<h5 id="每週二穎旻助教直播"><a href="#每週二穎旻助教直播" class="headerlink" title="每週二穎旻助教直播"></a>每週二穎旻助教直播</h5><p><img src="https://i.imgur.com/YiMMn1q.png"></p>
+<p>還有還有，最重要的是助教回覆速度都超快，以及每日都有線上助教待命，等你問問題。</p>
+]]></content>
       <tags>
         <tag>六角學院</tag>
       </tags>
