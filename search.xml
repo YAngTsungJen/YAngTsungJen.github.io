@@ -32,4 +32,25 @@
         <tag>心得</tag>
       </tags>
   </entry>
+  <entry>
+    <title>常用 Js函式庫</title>
+    <url>/2021/04/19/%E5%B8%B8%E7%94%A8-Js%E5%87%BD%E5%BC%8F%E5%BA%AB/</url>
+    <content><![CDATA[<h2 id="函式庫整理"><a href="#函式庫整理" class="headerlink" title="函式庫整理"></a>函式庫整理</h2><h3 id="千分位"><a href="#千分位" class="headerlink" title="千分位"></a>千分位</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toThousands</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> parts = x.toString().split(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">  parts[<span class="number">0</span>] = parts[<span class="number">0</span>].replace(<span class="regexp">/\B(?=(\d&#123;3&#125;)+(?!\d))/g</span>, <span class="string">&quot;,&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> parts.join(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<h3 id="手機驗證"><a href="#手機驗證" class="headerlink" title="手機驗證"></a>手機驗證</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">phoneIsValid</span> (<span class="params">phone</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="regexp">/^[09]&#123;2&#125;\d&#123;8&#125;$/</span>.test(phone))&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="信箱驗證-email"><a href="#信箱驗證-email" class="headerlink" title="信箱驗證(email)"></a>信箱驗證(email)</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">emailIsValid</span> (<span class="params">email</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="regexp">/^[^\s@]+@[^\s@]+\.[^\s@]+$/</span>.test(email))&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="排列順序"><a href="#排列順序" class="headerlink" title="排列順序"></a>排列順序</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">  item.sort(<span class="function">(<span class="params">a,b</span>) =&gt;</span> b[<span class="number">1</span>] - a[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">  item.sort(<span class="function">(<span class="params">a,b</span>) =&gt;</span> b - a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
 </search>
