@@ -68,4 +68,59 @@
         <tag>心得</tag>
       </tags>
   </entry>
+  <entry>
+    <title>JavaScript 的開發流程紀錄</title>
+    <url>/2021/04/28/JavaScript-%E7%9A%84%E9%96%8B%E7%99%BC%E6%B5%81%E7%A8%8B%E7%B4%80%E9%8C%84/</url>
+    <content><![CDATA[<h2 id="待辦事項"><a href="#待辦事項" class="headerlink" title="待辦事項"></a>待辦事項</h2><p><a href="https://xd.adobe.com/view/a48b8617-4588-4817-9062-b62130dce916-f1d8/">設計稿</a></p>
+<span id="more"></span>
+<ol>
+<li><p>環境建立</p>
+<ul>
+<li>建立基本環境</li>
+<li>拉完成的設計稿到自己的桌面</li>
+<li>稍微觀看的 CSS 結構</li>
+<li>調整 js 結構</li>
+<li>API config 設定確認<ul>
+<li>將私密帳號密碼放在 config</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>前台開發</p>
+<ul>
+<li>產品 get API 設計</li>
+<li>下拉選單（cheange 事件），在顯示畫面<ul>
+<li>重構下拉選單與 get API 設計</li>
+</ul>
+</li>
+<li>購物車 API 設計</li>
+<li>產生訂單 API 設計</li>
+</ul>
+</li>
+<li><p>後台開發</p>
+<ul>
+<li>下面的訂單列表</li>
+<li>上面的 C3 圖表</li>
+</ul>
+</li>
+<li><p>優化細節</p>
+<ul>
+<li>千分位設計</li>
+<li>使用者體驗</li>
+<li>validation 優化</li>
+<li>C3.js 優化</li>
+</ul>
+</li>
+</ol>
+<h2 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h2><blockquote>
+<p>先開發到客戶滿意程度，在私下重構、優化（錯誤回饋、UI 優化）⇒ 效能優化<br>零產出，比較容易做的功能先做一做<br>小步測試 ⇒ 寫開發 code ⇒ 小步測試 ⇒ 寫開發 code ⇒ 小小重構<br>tdd 測試，先寫測試 code，在寫產品 code<br>把成果文字化，寫成自己筆記</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
 </search>
