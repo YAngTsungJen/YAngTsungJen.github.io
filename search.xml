@@ -48,13 +48,88 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript 的開發流程紀錄</title>
+    <url>/2021/04/28/JavaScript-%E7%9A%84%E9%96%8B%E7%99%BC%E6%B5%81%E7%A8%8B%E7%B4%80%E9%8C%84/</url>
+    <content><![CDATA[<h2 id="待辦事項"><a href="#待辦事項" class="headerlink" title="待辦事項"></a>待辦事項</h2><p><a href="https://xd.adobe.com/view/a48b8617-4588-4817-9062-b62130dce916-f1d8/">設計稿</a></p>
+<span id="more"></span>
+<ol>
+<li><p>環境建立</p>
+<ul>
+<li>建立基本環境</li>
+<li>拉完成的設計稿到自己的桌面</li>
+<li>稍微觀看的 CSS 結構</li>
+<li>調整 js 結構</li>
+<li>API config 設定確認<ul>
+<li>將私密帳號密碼放在 config</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>前台開發</p>
+<ul>
+<li>產品 get API 設計</li>
+<li>下拉選單（cheange 事件），在顯示畫面<ul>
+<li>重構下拉選單與 get API 設計</li>
+</ul>
+</li>
+<li>購物車 API 設計</li>
+<li>產生訂單 API 設計</li>
+</ul>
+</li>
+<li><p>後台開發</p>
+<ul>
+<li>下面的訂單列表</li>
+<li>上面的 C3 圖表</li>
+</ul>
+</li>
+<li><p>優化細節</p>
+<ul>
+<li>千分位設計</li>
+<li>使用者體驗</li>
+<li>validation 優化</li>
+<li>C3.js 優化</li>
+</ul>
+</li>
+</ol>
+<h2 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h2><blockquote>
+<p>先開發到客戶滿意程度，在私下重構、優化（錯誤回饋、UI 優化）⇒ 效能優化<br>零產出，比較容易做的功能先做一做<br>小步測試 ⇒ 寫開發 code ⇒ 小步測試 ⇒ 寫開發 code ⇒ 小小重構<br>tdd 測試，先寫測試 code，在寫產品 code<br>把成果文字化，寫成自己筆記</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>什麼是 Git 呢？</title>
     <url>/2021/04/29/%E4%BB%80%E9%BA%BC%E6%98%AF-Git-%E5%91%A2%EF%BC%9F/</url>
     <content><![CDATA[<h2 id="為什麼要學-Git-？"><a href="#為什麼要學-Git-？" class="headerlink" title="為什麼要學 Git ？"></a>為什麼要學 Git ？</h2><ul>
 <li>Git 是程式碼版本控制軟體</li>
-<li>用網頁版型介紹 Git 的差異<span id="more"></span>
-我們可以在終端機上透過 git 指令來控制程式碼，也可以用圖形化介面的GuI來管理程式碼（SourceTree）。</li>
+<li>用網頁版型介紹 Git 的差異</li>
 </ul>
+<h2 id="Git-與-Github-是什麼？-差在哪呢？"><a href="#Git-與-Github-是什麼？-差在哪呢？" class="headerlink" title="Git 與 Github 是什麼？ 差在哪呢？"></a>Git 與 Github 是什麼？ 差在哪呢？</h2><ul>
+<li><p>Git 是一個分散式版本控制軟體，可藉由它產生一個*儲存庫( git Repository)*。</p>
+</li>
+<li><p>Github：支援 git 程式碼存取和<em>遠端托管儲存庫</em>的平台服務</p>
+</li>
+<li><p>關係像是本地端有一個 index.html，但可以放到 dropbox、Google Drive 進行雲端託管</p>
+<span id="more"></span>
+<h2 id="熱門遠端儲存庫-Github-VS-Bitbucket-VS-Gitlab"><a href="#熱門遠端儲存庫-Github-VS-Bitbucket-VS-Gitlab" class="headerlink" title="熱門遠端儲存庫(Github VS Bitbucket VS Gitlab)"></a>熱門遠端儲存庫(Github VS Bitbucket VS Gitlab)</h2></li>
+<li><p><a href="https://github.com/">GitHub</a>：擁有 GitHub Pages 功能，可擁有私人數據庫，免費方案是 3 人以下</p>
+</li>
+<li><p><a href="https://bitbucket.org/product/pricing">Bitbucket</a>：可擁有私人數據庫，免費方案是五人以下團隊</p>
+</li>
+<li><p><a href="https://about.gitlab.com/">GitLab</a>：自架 Git 伺服器，有提供 web 視覺化管理介面，常用於企業內部開發</p>
+</li>
+</ul>
+<p>懶人包解釋：</p>
+<ul>
+<li>公司專案的小型團隊可用 Bitbucket</li>
+<li>想要有一個公開對外網站的話，可用 GitHub</li>
+</ul>
+<p>我們可以在終端機上透過 git 指令來控制程式碼，也可以用圖形化介面的GuI來管理程式碼（SourceTree）。</p>
 <h2 id="軟體與服務安裝"><a href="#軟體與服務安裝" class="headerlink" title="軟體與服務安裝"></a>軟體與服務安裝</h2><p>在學習版控前，可以將以下軟體進行安裝與註冊。</p>
 <ul>
 <li><a href="https://git-scm.com/">Git 軟體安裝</a> - 首頁 Download</li>
@@ -113,61 +188,6 @@
       <tags>
         <tag>GitHub</tag>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 的開發流程紀錄</title>
-    <url>/2021/04/28/JavaScript-%E7%9A%84%E9%96%8B%E7%99%BC%E6%B5%81%E7%A8%8B%E7%B4%80%E9%8C%84/</url>
-    <content><![CDATA[<h2 id="待辦事項"><a href="#待辦事項" class="headerlink" title="待辦事項"></a>待辦事項</h2><p><a href="https://xd.adobe.com/view/a48b8617-4588-4817-9062-b62130dce916-f1d8/">設計稿</a></p>
-<span id="more"></span>
-<ol>
-<li><p>環境建立</p>
-<ul>
-<li>建立基本環境</li>
-<li>拉完成的設計稿到自己的桌面</li>
-<li>稍微觀看的 CSS 結構</li>
-<li>調整 js 結構</li>
-<li>API config 設定確認<ul>
-<li>將私密帳號密碼放在 config</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>前台開發</p>
-<ul>
-<li>產品 get API 設計</li>
-<li>下拉選單（cheange 事件），在顯示畫面<ul>
-<li>重構下拉選單與 get API 設計</li>
-</ul>
-</li>
-<li>購物車 API 設計</li>
-<li>產生訂單 API 設計</li>
-</ul>
-</li>
-<li><p>後台開發</p>
-<ul>
-<li>下面的訂單列表</li>
-<li>上面的 C3 圖表</li>
-</ul>
-</li>
-<li><p>優化細節</p>
-<ul>
-<li>千分位設計</li>
-<li>使用者體驗</li>
-<li>validation 優化</li>
-<li>C3.js 優化</li>
-</ul>
-</li>
-</ol>
-<h2 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h2><blockquote>
-<p>先開發到客戶滿意程度，在私下重構、優化（錯誤回饋、UI 優化）⇒ 效能優化<br>零產出，比較容易做的功能先做一做<br>小步測試 ⇒ 寫開發 code ⇒ 小步測試 ⇒ 寫開發 code ⇒ 小小重構<br>tdd 測試，先寫測試 code，在寫產品 code<br>把成果文字化，寫成自己筆記</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
