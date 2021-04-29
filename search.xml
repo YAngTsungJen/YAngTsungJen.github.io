@@ -137,24 +137,20 @@
     <url>/2021/04/29/git-%E9%82%84%E5%8E%9F%E6%8A%80%E5%B7%A7/</url>
     <content><![CDATA[<h2 id="還原技巧"><a href="#還原技巧" class="headerlink" title="還原技巧"></a>還原技巧</h2><p><img src="reset.png" alt="檔案"></p>
 <ol>
-<li><p>新增檔案時，檔案還沒加追蹤時（untracked），清空工作目錄</p>
-<ul>
+<li>新增檔案時，檔案還沒加追蹤時（untracked），清空工作目錄<ul>
 <li>顯示此次清除的檔案（預期要刪掉的檔案）：git clean -n</li>
 <li>強制清除檔案：git clean -f<span id="more"></span></li>
 </ul>
 </li>
-<li><p>檔案已加入追蹤，清空工作目錄</p>
-<ul>
+<li>檔案已加入追蹤，清空工作目錄<ul>
 <li>還原工作目錄上已更改的檔案（已在commit過的檔案）：git checkout – files(你要還原的檔案)<br>p.s(changes not staged for commit)</li>
 </ul>
 </li>
-<li><p>檔案加入到索引，退到工作目錄</p>
-<ul>
+<li>檔案加入到索引，退到工作目錄<ul>
 <li>加入索引的檔案還原到工作目錄：git reset HEAD<br>p.s(changes to be committed)</li>
 </ul>
 </li>
-<li><p>版本還原</p>
-<ul>
+<li>版本還原<ul>
 <li>還原前兩個版本：git reset HEAD^^</li>
 <li>還原前兩個版本，所有更新檔案都放棄：git reset HEAD^^ –hard</li>
 <li>觀看詳細歷史紀錄：git reflog</li>
