@@ -1,27 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Git 遠端數據庫</title>
-    <url>/2021/04/29/Git-%E9%81%A0%E7%AB%AF%E6%95%B8%E6%93%9A%E5%BA%AB/</url>
-    <content><![CDATA[<h2 id="遠端儲存庫-Repository-操作"><a href="#遠端儲存庫-Repository-操作" class="headerlink" title="遠端儲存庫(Repository)操作"></a>遠端儲存庫(Repository)操作</h2><p>我們可以在已經上傳的數據庫，再增加一個遠端存儲庫</p>
-<p>步驟為：</p>
-<blockquote>
-<p>註冊 -&gt; git remote add 第二個數據庫名稱 遠端儲存庫網址 -&gt; 更新資料到遠端 master 分支：<code>git push -u 第二個數據庫名稱 master</code></p>
-</blockquote>
+    <title>GitHub 的金鑰匙</title>
+    <url>/2021/04/28/GitHub-%E7%9A%84%E9%87%91%E9%91%B0%E5%8C%99/</url>
+    <content><![CDATA[<h2 id="到底如何設定GitHub-的-SSH-呢？"><a href="#到底如何設定GitHub-的-SSH-呢？" class="headerlink" title="到底如何設定GitHub 的 SSH 呢？"></a>到底如何設定GitHub 的 SSH 呢？</h2><span id="more"></span>
+<p>步驟一：<br>首先，要先用終端機移動到本機（也就是你這台電腦）的 .ssh上<br>例如：我終端機前面那行字為<code>yang@yangcongrendeMacBook-Air</code>，所以輸入<br><code>cd /Users/yang/.ssh</code>，移動到.ssh上。</p>
+<p>步驟二：在<code>yang@yangcongrendeMacBook-Air .ssh</code>的位置上，再輸入<br><code>cat id_rsa.pub</code>這串指令，會跑出一段密碼。將這段密碼貼到gitHub的設定上面（最前面ssh-rsa不用貼）。<br>所以簡單來說，只要輸入兩行指令(yang是我的電腦名字，要自己改掉哦)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /Users/yang/.ssh</span><br><span class="line">cat id_rsa.pub</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>GitHub</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git 還原技巧</title>
+    <url>/2021/04/29/git-%E9%82%84%E5%8E%9F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<h2 id="還原技巧"><a href="#還原技巧" class="headerlink" title="還原技巧"></a>還原技巧</h2><p><img src="reset.png" alt="檔案"></p>
 <span id="more"></span>
+<ol>
+<li><p>新增檔案時，檔案還沒加追蹤時（untracked），清空工作目錄</p>
 <ul>
-<li>註冊遠端儲存庫：<code>git remote add origin 遠端儲存庫網址</code></li>
-<li>更新資料到遠端 master 分支：<code>git push -u origin master</code></li>
-<li>u 是指他預設會推到哪個遠端數據庫服務</li>
-<li>origin 可以改它的遠端數據庫名稱，例如 : <code>git push -u github master</code></li>
+<li>顯示此次清除的檔案（預期要刪掉的檔案）：git clean -n</li>
+<li>強制清除檔案：git clean -f</li>
 </ul>
-<h2 id="Git-版本細節"><a href="#Git-版本細節" class="headerlink" title="Git 版本細節"></a>Git 版本細節</h2><ul>
-<li>branch ：分支，預設分支叫做 master</li>
-<li>HEAD：指標</li>
-<li>origin：預設遠端儲存庫名稱</li>
-<li>回頭觀看版本內容：git checkout 編號</li>
-<li>返回最新的版本：git checkout master(分支名稱)</li>
+</li>
+<li><p>檔案已加入追蹤，清空工作目錄</p>
+<ul>
+<li>還原工作目錄上已更改的檔案（已在commit過的檔案）：git checkout – files(你要還原的檔案)<br>p.s(changes not staged for commit)</li>
 </ul>
+</li>
+<li><p>檔案加入到索引，退到工作目錄</p>
+<ul>
+<li>加入索引的檔案還原到工作目錄：git reset HEAD<br>p.s(changes to be committed)</li>
+</ul>
+</li>
+<li><p>版本還原</p>
+<ul>
+<li>還原前兩個版本：git reset HEAD^^</li>
+<li>還原前兩個版本，所有更新檔案都放棄：git reset HEAD^^ –hard</li>
+<li>觀看詳細歷史紀錄：git reflog</li>
+<li>還原到特定 commit：git reset commit編號 –hard</li>
+<li>git reset <a href="https://gitbook.tw/chapters/using-git/reset-commit.html">參數介紹</a></li>
+</ul>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>GitHub</category>
@@ -115,39 +140,6 @@
       </categories>
       <tags>
         <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git 還原技巧</title>
-    <url>/2021/04/29/git-%E9%82%84%E5%8E%9F%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<h2 id="還原技巧"><a href="#還原技巧" class="headerlink" title="還原技巧"></a>還原技巧</h2><p><img src="image2.png" alt="檔案"></p>
-<p>新增檔案時，檔案還沒加追蹤時，清空工作目錄</p>
-<ul>
-<li>顯示此次清除的檔案（預期要刪掉的檔案）：git clean -n</li>
-<li>強制清除檔案：git clean -f</li>
-</ul>
-<p>檔案已加入追蹤，清空工作目錄</p>
-<ul>
-<li>還原工作目錄上已更改的檔案 ：git checkout –</li>
-</ul>
-<p>檔案加入到索引，退到工作目錄</p>
-<ul>
-<li>加入索引的檔案還原到工作目錄：git reset HEAD</li>
-</ul>
-<p>版本還原</p>
-<ul>
-<li>還原前兩個版本：git reset HEAD^^</li>
-<li>還原前兩個版本，所有更新檔案都放棄：git reset HEAD^^ –hard</li>
-<li>觀看詳細歷史紀錄：git reflog</li>
-<li>還原到特定 commit：git reset commit編號 –hard</li>
-<li>git reset <a href="https://gitbook.tw/chapters/using-git/reset-commit.html">參數介紹</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>GitHub</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
       </tags>
   </entry>
   <entry>
@@ -260,12 +252,27 @@
       </tags>
   </entry>
   <entry>
-    <title>GitHub 的金鑰匙</title>
-    <url>/2021/04/28/GitHub-%E7%9A%84%E9%87%91%E9%91%B0%E5%8C%99/</url>
-    <content><![CDATA[<h2 id="到底如何設定GitHub-的-SSH-呢？"><a href="#到底如何設定GitHub-的-SSH-呢？" class="headerlink" title="到底如何設定GitHub 的 SSH 呢？"></a>到底如何設定GitHub 的 SSH 呢？</h2><span id="more"></span>
-<p>步驟一：<br>首先，要先用終端機移動到本機（也就是你這台電腦）的 .ssh上<br>例如：我終端機前面那行字為<code>yang@yangcongrendeMacBook-Air</code>，所以輸入<br><code>cd /Users/yang/.ssh</code>，移動到.ssh上。</p>
-<p>步驟二：在<code>yang@yangcongrendeMacBook-Air .ssh</code>的位置上，再輸入<br><code>cat id_rsa.pub</code>這串指令，會跑出一段密碼。將這段密碼貼到gitHub的設定上面（最前面ssh-rsa不用貼）。<br>所以簡單來說，只要輸入兩行指令(yang是我的電腦名字，要自己改掉哦)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /Users/yang/.ssh</span><br><span class="line">cat id_rsa.pub</span><br></pre></td></tr></table></figure>
+    <title>Git 遠端數據庫</title>
+    <url>/2021/04/29/Git-%E9%81%A0%E7%AB%AF%E6%95%B8%E6%93%9A%E5%BA%AB/</url>
+    <content><![CDATA[<h2 id="遠端儲存庫-Repository-操作"><a href="#遠端儲存庫-Repository-操作" class="headerlink" title="遠端儲存庫(Repository)操作"></a>遠端儲存庫(Repository)操作</h2><p>我們可以在已經上傳的數據庫，再增加一個遠端存儲庫</p>
+<p>步驟為：</p>
+<blockquote>
+<p>註冊 -&gt; git remote add 第二個數據庫名稱 遠端儲存庫網址 -&gt; 更新資料到遠端 master 分支：<code>git push -u 第二個數據庫名稱 master</code></p>
+</blockquote>
+<span id="more"></span>
+<ul>
+<li>註冊遠端儲存庫：<code>git remote add origin 遠端儲存庫網址</code></li>
+<li>更新資料到遠端 master 分支：<code>git push -u origin master</code></li>
+<li>u 是指他預設會推到哪個遠端數據庫服務</li>
+<li>origin 可以改它的遠端數據庫名稱，例如 : <code>git push -u github master</code></li>
+</ul>
+<h2 id="Git-版本細節"><a href="#Git-版本細節" class="headerlink" title="Git 版本細節"></a>Git 版本細節</h2><ul>
+<li>branch ：分支，預設分支叫做 master</li>
+<li>HEAD：指標</li>
+<li>origin：預設遠端儲存庫名稱</li>
+<li>回頭觀看版本內容：git checkout 編號</li>
+<li>返回最新的版本：git checkout master(分支名稱)</li>
+</ul>
 ]]></content>
       <categories>
         <category>GitHub</category>
