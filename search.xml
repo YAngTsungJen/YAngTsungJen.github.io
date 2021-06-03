@@ -212,6 +212,30 @@
       </tags>
   </entry>
   <entry>
+    <title>Bootstrap-客製化</title>
+    <url>/2021/06/03/Bootstrap/Bootstrap-%E5%AE%A2%E8%A3%BD%E5%8C%96/</url>
+    <content><![CDATA[<h2 id="Bootstrap-客製化"><a href="#Bootstrap-客製化" class="headerlink" title="Bootstrap-客製化"></a>Bootstrap-客製化</h2><ol>
+<li><p>首先，在桌面建立資料夾，再來到<a href="https://bootstrap5.hexschool.com/docs/5.0/getting-started/download/">官網下載區</a>找到下載方法，回到vsCode 輸入指令 <code>npm install bootstrap</code>，即可安裝完成 node_modules。</p>
+</li>
+<li><p>建立 SCSS 資料夾，建立兩個檔案，建立 all.scss 和 custom.scss。</p>
+</li>
+<li><p>all.scss 裡載入客製化程式碼。如下</p>
+<span id="more"></span>
+ <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;./custom.scss&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/scss/bootstrap.scss&quot;</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>custom.scss 裡，把node_modules/scss/variables的資料檔案複製一份到custom.scss，作為客製化的主要變數檔。</p>
+</li>
+<li><p>在 index.html 主檔，js部分如下方程式碼，即可完成客製化。</p>
+ <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>bootstrap</category>
+      </categories>
+      <tags>
+        <tag>bootstrap</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Bootstrap-通用類別介紹</title>
     <url>/2021/06/02/Bootstrap/Bootstrap-%E9%80%9A%E7%94%A8%E9%A1%9E%E5%88%A5%E4%BB%8B%E7%B4%B9/</url>
     <content><![CDATA[<h2 id="位置（Position）"><a href="#位置（Position）" class="headerlink" title="位置（Position）"></a>位置（Position）</h2><ul>
@@ -359,36 +383,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Git 遠端數據庫</title>
-    <url>/2021/04/29/github/Git-%E9%81%A0%E7%AB%AF%E6%95%B8%E6%93%9A%E5%BA%AB/</url>
-    <content><![CDATA[<h2 id="遠端儲存庫-Repository-操作"><a href="#遠端儲存庫-Repository-操作" class="headerlink" title="遠端儲存庫(Repository)操作"></a>遠端儲存庫(Repository)操作</h2><p>我們可以在已經上傳的數據庫，再增加一個遠端存儲庫</p>
-<p>步驟為：</p>
-<blockquote>
-<p>註冊 -&gt; git remote add 第二個數據庫名稱 遠端儲存庫網址 -&gt; 更新資料到遠端 master 分支：<code>git push -u 第二個數據庫名稱 master</code></p>
-</blockquote>
-<span id="more"></span>
-<ul>
-<li>註冊遠端儲存庫：<code>git remote add origin 遠端儲存庫網址</code></li>
-<li>更新資料到遠端 master 分支：<code>git push -u origin master</code></li>
-<li>u 是指他預設會推到哪個遠端數據庫服務</li>
-<li>origin 可以改它的遠端數據庫名稱，例如 : <code>git push -u github master</code></li>
-</ul>
-<h2 id="Git-版本細節"><a href="#Git-版本細節" class="headerlink" title="Git 版本細節"></a>Git 版本細節</h2><ul>
-<li>branch ：分支，預設分支叫做 master</li>
-<li>HEAD：指標</li>
-<li>origin：預設遠端儲存庫名稱</li>
-<li>回頭觀看版本內容：git checkout 編號</li>
-<li>返回最新的版本：git checkout master(分支名稱)</li>
-</ul>
-]]></content>
-      <categories>
-        <category>GitHub</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JS 衝刺班心得分享</title>
     <url>/2021/04/15/%E5%BF%83%E5%BE%97/JS-%E8%A1%9D%E5%88%BA%E7%8F%AD%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB/</url>
     <content><![CDATA[<p><img src="https://images.unsplash.com/photo-1483859562288-7f9e4c80c1cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1961&q=80" alt="os"></p>
@@ -421,6 +415,51 @@
       </tags>
   </entry>
   <entry>
+    <title>Git 遠端數據庫</title>
+    <url>/2021/04/29/github/Git-%E9%81%A0%E7%AB%AF%E6%95%B8%E6%93%9A%E5%BA%AB/</url>
+    <content><![CDATA[<h2 id="遠端儲存庫-Repository-操作"><a href="#遠端儲存庫-Repository-操作" class="headerlink" title="遠端儲存庫(Repository)操作"></a>遠端儲存庫(Repository)操作</h2><p>我們可以在已經上傳的數據庫，再增加一個遠端存儲庫</p>
+<p>步驟為：</p>
+<blockquote>
+<p>註冊 -&gt; git remote add 第二個數據庫名稱 遠端儲存庫網址 -&gt; 更新資料到遠端 master 分支：<code>git push -u 第二個數據庫名稱 master</code></p>
+</blockquote>
+<span id="more"></span>
+<ul>
+<li>註冊遠端儲存庫：<code>git remote add origin 遠端儲存庫網址</code></li>
+<li>更新資料到遠端 master 分支：<code>git push -u origin master</code></li>
+<li>u 是指他預設會推到哪個遠端數據庫服務</li>
+<li>origin 可以改它的遠端數據庫名稱，例如 : <code>git push -u github master</code></li>
+</ul>
+<h2 id="Git-版本細節"><a href="#Git-版本細節" class="headerlink" title="Git 版本細節"></a>Git 版本細節</h2><ul>
+<li>branch ：分支，預設分支叫做 master</li>
+<li>HEAD：指標</li>
+<li>origin：預設遠端儲存庫名稱</li>
+<li>回頭觀看版本內容：git checkout 編號</li>
+<li>返回最新的版本：git checkout master(分支名稱)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>GitHub</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GitHub 的金鑰匙</title>
+    <url>/2021/04/28/github/GitHub-%E7%9A%84%E9%87%91%E9%91%B0%E5%8C%99/</url>
+    <content><![CDATA[<h2 id="到底如何設定GitHub-的-SSH-呢？"><a href="#到底如何設定GitHub-的-SSH-呢？" class="headerlink" title="到底如何設定GitHub 的 SSH 呢？"></a>到底如何設定GitHub 的 SSH 呢？</h2><span id="more"></span>
+<p>步驟一：<br>首先，要先用終端機移動到本機（也就是你這台電腦）的 .ssh上<br>例如：我終端機前面那行字為<code>yang@yangcongrendeMacBook-Air</code>，所以輸入<br><code>cd /Users/yang/.ssh</code>，移動到.ssh上。</p>
+<p>步驟二：在<code>yang@yangcongrendeMacBook-Air .ssh</code>的位置上，再輸入<br><code>cat id_rsa.pub</code>這串指令，會跑出一段密碼。將這段密碼貼到gitHub的設定上面（最前面ssh-rsa不用貼）。<br>所以簡單來說，只要輸入兩行指令(yang是我的電腦名字，要自己改掉哦)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /Users/yang/.ssh</span><br><span class="line">cat id_rsa.pub</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>GitHub</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>commit 衝突</title>
     <url>/2021/05/04/github/commit-%E8%A1%9D%E7%AA%81/</url>
     <content><![CDATA[<h2 id="本地-commit-衝突"><a href="#本地-commit-衝突" class="headerlink" title="本地 commit 衝突"></a>本地 commit 衝突</h2><ol>
@@ -450,95 +489,6 @@
 <li><p>解決：<br>  因為 B 的檔案已在遠端上了，我們本地端的不是最新版的，因此我們要先輸入 <code>git pull</code> 把我們本地端檔案和遠端檔案合併，若有發生 遠端衝突時，要解決完成再<code>git add .</code> <code>git commit -m &#39;merge&#39;</code>，才算完成</p>
 </li>
 </ul>
-]]></content>
-      <categories>
-        <category>GitHub</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>GitHub 的金鑰匙</title>
-    <url>/2021/04/28/github/GitHub-%E7%9A%84%E9%87%91%E9%91%B0%E5%8C%99/</url>
-    <content><![CDATA[<h2 id="到底如何設定GitHub-的-SSH-呢？"><a href="#到底如何設定GitHub-的-SSH-呢？" class="headerlink" title="到底如何設定GitHub 的 SSH 呢？"></a>到底如何設定GitHub 的 SSH 呢？</h2><span id="more"></span>
-<p>步驟一：<br>首先，要先用終端機移動到本機（也就是你這台電腦）的 .ssh上<br>例如：我終端機前面那行字為<code>yang@yangcongrendeMacBook-Air</code>，所以輸入<br><code>cd /Users/yang/.ssh</code>，移動到.ssh上。</p>
-<p>步驟二：在<code>yang@yangcongrendeMacBook-Air .ssh</code>的位置上，再輸入<br><code>cat id_rsa.pub</code>這串指令，會跑出一段密碼。將這段密碼貼到gitHub的設定上面（最前面ssh-rsa不用貼）。<br>所以簡單來說，只要輸入兩行指令(yang是我的電腦名字，要自己改掉哦)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /Users/yang/.ssh</span><br><span class="line">cat id_rsa.pub</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>GitHub</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>搞懂 Git 分支五四三！</title>
-    <url>/2021/04/30/github/%E6%90%9E%E6%87%82-Git-%E5%88%86%E6%94%AF%E4%BA%94%E5%9B%9B%E4%B8%89%EF%BC%81/</url>
-    <content><![CDATA[<h2 id="Git-分支-branch"><a href="#Git-分支-branch" class="headerlink" title="Git 分支(branch)"></a>Git 分支(branch)</h2><p>搭配 <a href="https://learngitbranching.js.org/?locale=zh_TW">Learn Git Branching</a>。</p>
-<p>在一開始接觸 git branch，總會疑問著，分支是什麼，可以運用在什麼地方？</p>
-<ul>
-<li>多人協作時，不可能都在 master</li>
-<li>可以讓 master 都是正式版資料，可以開分支來做測試或開發，藉此不影響正式主機分支<span id="more"></span></li>
-</ul>
-<h2 id="試著想像～"><a href="#試著想像～" class="headerlink" title="試著想像～"></a>試著想像～</h2><ul>
-<li>分支就像是便利貼，貼在某個 commit 上</li>
-<li>分支合併，主要是兩個 commit 進行合併</li>
-</ul>
-<h2 id="結論～開分支流程"><a href="#結論～開分支流程" class="headerlink" title="結論～開分支流程"></a>結論～開分支流程</h2><ol>
-<li><p>新增分支：</p>
-<pre><code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch 分支名稱</span><br></pre></td></tr></table></figure>
-</code></pre>
-</li>
-<li><p>查看分支：</p>
-<pre><code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
-</code></pre>
-</li>
-<li><p>切換分支：</p>
-<pre><code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout 分支名稱</span><br></pre></td></tr></table></figure>
-</code></pre>
-</li>
-<li><p>刪除分支：</p>
-<pre><code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -d 分支名稱</span><br></pre></td></tr></table></figure>
-</code></pre>
-<p> -D 是強制刪除</p>
-</li>
-<li><p>還原上個版本：</p>
-<pre><code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reset HEAD^</span><br></pre></td></tr></table></figure>
-</code></pre>
-<p> 開發情境：我有一個正式主機 master 分支，有一個開發分支叫做 develop</p>
-</li>
-</ol>
-<h2 id="合併分支-amp-amp-快轉機制"><a href="#合併分支-amp-amp-快轉機制" class="headerlink" title="合併分支 &amp;&amp; 快轉機制"></a>合併分支 &amp;&amp; 快轉機制</h2><ol>
-<li><p>合併分支：</p>
-<pre><code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git merge 分支名稱</span><br></pre></td></tr></table></figure>
-</code></pre>
-</li>
-<li><p>取消快轉：</p>
-<pre><code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git merge 分支名稱 --no-ff</span><br></pre></td></tr></table></figure>
-</code></pre>
-</li>
-<li><p>觀看線圖：</p>
-<pre><code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span> —oneline -graph</span><br></pre></td></tr></table></figure>
-</code></pre>
-</li>
-<li><p>還原合併前狀態：</p>
-<pre><code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reset —hard ORIG_HEAD</span><br></pre></td></tr></table></figure>
-</code></pre>
-</li>
-</ol>
-<h2 id="快轉機制"><a href="#快轉機制" class="headerlink" title="快轉機制"></a>快轉機制</h2><ul>
-<li>取消快轉：兩個不同任務分支合併時，取消快轉</li>
-<li>預設使用快轉：本地與遠端兩條相同的任務分支時，可以用快轉</li>
-</ul>
-<blockquote>
-<p>判斷機制：</p>
-</blockquote>
-<pre><code>1. 當 master 或 其他分支 其中一個還在源頭時，要使用取消快轉`git merge 分支名稱 --no-ff`
-
-2. 反之，當 master 或其他分支已經不在源頭時（都有commit過），就可以直接使用快轉`git merge 分支名稱`
-</code></pre>
 ]]></content>
       <categories>
         <category>GitHub</category>
@@ -645,20 +595,6 @@
       </tags>
   </entry>
   <entry>
-    <title>發 PR 流程</title>
-    <url>/2021/05/04/github/%E7%99%BC-PR-%E6%B5%81%E7%A8%8B/</url>
-    <content><![CDATA[<h2 id="GitHub-pull-request-請求流程"><a href="#GitHub-pull-request-請求流程" class="headerlink" title="GitHub pull request(請求流程)"></a>GitHub pull request(請求流程)</h2><blockquote>
-<p>找到專案 -&gt; fork 專案到自己 gitHub 上 -&gt; 把檔案 git clone 到自己桌面 -&gt; 開啟新分支<code>git branch feature</code> -&gt; commit 自己資料 -&gt; <code>git push origin feature</code>到遠端 -&gt; 點擊 pull request -&gt; New pull request -&gt;確認是將feature分支 pr 到專案的 dev -&gt; 若沒有跳出 merge conflict -&gt; scuuess</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>GitHub</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>什麼是 Git 呢？</title>
     <url>/2021/04/29/github/%E4%BB%80%E9%BA%BC%E6%98%AF-Git-%E5%91%A2%EF%BC%9F/</url>
     <content><![CDATA[<h2 id="為什麼要學-Git-？"><a href="#為什麼要學-Git-？" class="headerlink" title="為什麼要學 Git ？"></a>為什麼要學 Git ？</h2><ul>
@@ -744,6 +680,94 @@
       <tags>
         <tag>GitHub</tag>
         <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搞懂 Git 分支五四三！</title>
+    <url>/2021/04/30/github/%E6%90%9E%E6%87%82-Git-%E5%88%86%E6%94%AF%E4%BA%94%E5%9B%9B%E4%B8%89%EF%BC%81/</url>
+    <content><![CDATA[<h2 id="Git-分支-branch"><a href="#Git-分支-branch" class="headerlink" title="Git 分支(branch)"></a>Git 分支(branch)</h2><p>搭配 <a href="https://learngitbranching.js.org/?locale=zh_TW">Learn Git Branching</a>。</p>
+<p>在一開始接觸 git branch，總會疑問著，分支是什麼，可以運用在什麼地方？</p>
+<ul>
+<li>多人協作時，不可能都在 master</li>
+<li>可以讓 master 都是正式版資料，可以開分支來做測試或開發，藉此不影響正式主機分支<span id="more"></span></li>
+</ul>
+<h2 id="試著想像～"><a href="#試著想像～" class="headerlink" title="試著想像～"></a>試著想像～</h2><ul>
+<li>分支就像是便利貼，貼在某個 commit 上</li>
+<li>分支合併，主要是兩個 commit 進行合併</li>
+</ul>
+<h2 id="結論～開分支流程"><a href="#結論～開分支流程" class="headerlink" title="結論～開分支流程"></a>結論～開分支流程</h2><ol>
+<li><p>新增分支：</p>
+<pre><code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch 分支名稱</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>查看分支：</p>
+<pre><code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>切換分支：</p>
+<pre><code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout 分支名稱</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>刪除分支：</p>
+<pre><code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -d 分支名稱</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p> -D 是強制刪除</p>
+</li>
+<li><p>還原上個版本：</p>
+<pre><code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reset HEAD^</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p> 開發情境：我有一個正式主機 master 分支，有一個開發分支叫做 develop</p>
+</li>
+</ol>
+<h2 id="合併分支-amp-amp-快轉機制"><a href="#合併分支-amp-amp-快轉機制" class="headerlink" title="合併分支 &amp;&amp; 快轉機制"></a>合併分支 &amp;&amp; 快轉機制</h2><ol>
+<li><p>合併分支：</p>
+<pre><code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git merge 分支名稱</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>取消快轉：</p>
+<pre><code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git merge 分支名稱 --no-ff</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>觀看線圖：</p>
+<pre><code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span> —oneline -graph</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>還原合併前狀態：</p>
+<pre><code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reset —hard ORIG_HEAD</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ol>
+<h2 id="快轉機制"><a href="#快轉機制" class="headerlink" title="快轉機制"></a>快轉機制</h2><ul>
+<li>取消快轉：兩個不同任務分支合併時，取消快轉</li>
+<li>預設使用快轉：本地與遠端兩條相同的任務分支時，可以用快轉</li>
+</ul>
+<blockquote>
+<p>判斷機制：</p>
+</blockquote>
+<pre><code>1. 當 master 或 其他分支 其中一個還在源頭時，要使用取消快轉`git merge 分支名稱 --no-ff`
+
+2. 反之，當 master 或其他分支已經不在源頭時（都有commit過），就可以直接使用快轉`git merge 分支名稱`
+</code></pre>
+]]></content>
+      <categories>
+        <category>GitHub</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>發 PR 流程</title>
+    <url>/2021/05/04/github/%E7%99%BC-PR-%E6%B5%81%E7%A8%8B/</url>
+    <content><![CDATA[<h2 id="GitHub-pull-request-請求流程"><a href="#GitHub-pull-request-請求流程" class="headerlink" title="GitHub pull request(請求流程)"></a>GitHub pull request(請求流程)</h2><blockquote>
+<p>找到專案 -&gt; fork 專案到自己 gitHub 上 -&gt; 把檔案 git clone 到自己桌面 -&gt; 開啟新分支<code>git branch feature</code> -&gt; commit 自己資料 -&gt; <code>git push origin feature</code>到遠端 -&gt; 點擊 pull request -&gt; New pull request -&gt;確認是將feature分支 pr 到專案的 dev -&gt; 若沒有跳出 merge conflict -&gt; scuuess</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>GitHub</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
       </tags>
   </entry>
 </search>
