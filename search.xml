@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>123</title>
-    <url>/2021/06/16/123/</url>
-    <content><![CDATA[<h2 id="1213123"><a href="#1213123" class="headerlink" title="1213123"></a>1213123</h2>]]></content>
-      <categories>
-        <category>132213</category>
-      </categories>
-      <tags>
-        <tag>2131</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>BS5 格線系統（Grid System）</title>
     <url>/2021/05/24/Bootstrap/BS5-%E6%A0%BC%E7%B7%9A%E7%B3%BB%E7%B5%B1%EF%BC%88Grid-System%EF%BC%89/</url>
     <content><![CDATA[<h2 id="什麼是格線系統？"><a href="#什麼是格線系統？" class="headerlink" title="什麼是格線系統？"></a>什麼是格線系統？</h2><ul>
@@ -372,6 +361,44 @@
       </tags>
   </entry>
   <entry>
+    <title>commit 衝突</title>
+    <url>/2021/05/04/github/commit-%E8%A1%9D%E7%AA%81/</url>
+    <content><![CDATA[<h2 id="本地-commit-衝突"><a href="#本地-commit-衝突" class="headerlink" title="本地 commit 衝突"></a>本地 commit 衝突</h2><ol>
+<li>原因：<blockquote>
+<p>兩個 commit 在合併時，檔案裡的某一行有重複修改到時，就會觸發</p>
+</blockquote>
+</li>
+<li>解決：<ul>
+<li>因為分支修改到同一行的code，所以當 merge 時，會出現 commit 衝突。</li>
+<li>解決完在工作目錄的 commit 衝突，需要再<code>git add .</code> <code>git commit -m &#39;merge&#39;</code>，才算完成。<span id="more"></span></li>
+</ul>
+</li>
+</ol>
+<h2 id="遠端-commit-衝突"><a href="#遠端-commit-衝突" class="headerlink" title="遠端 commit 衝突"></a>遠端 commit 衝突</h2><ul>
+<li><p>故事理解：</p>
+<blockquote>
+<ol>
+<li>A 跟 B 一起在同個 repo 開發，只有一條 master 線</li>
+<li>A 先部署了一個 commit 到 master</li>
+<li>B 更新了第六行程式碼，並在下班前立馬 push</li>
+<li>A 也改了第六行，但他效率比較差，下班後 push 時才發現，B 這個ㄐ歪人先 push 了！</li>
+<li>A 只好先 pull 下來，結果竟然跟自己的 commit 衝突</li>
+<li>A 只好邊罵髒話，邊解決衝突，整理好後再 push</li>
+</ol>
+</blockquote>
+</li>
+<li><p>解決：<br>  因為 B 的檔案已在遠端上了，我們本地端的不是最新版的，因此我們要先輸入 <code>git pull</code> 把我們本地端檔案和遠端檔案合併，若有發生 遠端衝突時，要解決完成再<code>git add .</code> <code>git commit -m &#39;merge&#39;</code>，才算完成</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>GitHub</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git 還原技巧</title>
     <url>/2021/04/29/github/git-%E9%82%84%E5%8E%9F%E6%8A%80%E5%B7%A7/</url>
     <content><![CDATA[<h2 id="還原技巧"><a href="#還原技巧" class="headerlink" title="還原技巧"></a>還原技巧</h2><p>新增檔案時</p>
@@ -417,44 +444,6 @@
 <h2 id="checkout-與-reset-差異"><a href="#checkout-與-reset-差異" class="headerlink" title="checkout 與 reset 差異"></a>checkout 與 reset 差異</h2><pre><code>- checkout 是移動 HEAD
 - reset 是移動 branch 及HEAD
 </code></pre>
-]]></content>
-      <categories>
-        <category>GitHub</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>commit 衝突</title>
-    <url>/2021/05/04/github/commit-%E8%A1%9D%E7%AA%81/</url>
-    <content><![CDATA[<h2 id="本地-commit-衝突"><a href="#本地-commit-衝突" class="headerlink" title="本地 commit 衝突"></a>本地 commit 衝突</h2><ol>
-<li>原因：<blockquote>
-<p>兩個 commit 在合併時，檔案裡的某一行有重複修改到時，就會觸發</p>
-</blockquote>
-</li>
-<li>解決：<ul>
-<li>因為分支修改到同一行的code，所以當 merge 時，會出現 commit 衝突。</li>
-<li>解決完在工作目錄的 commit 衝突，需要再<code>git add .</code> <code>git commit -m &#39;merge&#39;</code>，才算完成。<span id="more"></span></li>
-</ul>
-</li>
-</ol>
-<h2 id="遠端-commit-衝突"><a href="#遠端-commit-衝突" class="headerlink" title="遠端 commit 衝突"></a>遠端 commit 衝突</h2><ul>
-<li><p>故事理解：</p>
-<blockquote>
-<ol>
-<li>A 跟 B 一起在同個 repo 開發，只有一條 master 線</li>
-<li>A 先部署了一個 commit 到 master</li>
-<li>B 更新了第六行程式碼，並在下班前立馬 push</li>
-<li>A 也改了第六行，但他效率比較差，下班後 push 時才發現，B 這個ㄐ歪人先 push 了！</li>
-<li>A 只好先 pull 下來，結果竟然跟自己的 commit 衝突</li>
-<li>A 只好邊罵髒話，邊解決衝突，整理好後再 push</li>
-</ol>
-</blockquote>
-</li>
-<li><p>解決：<br>  因為 B 的檔案已在遠端上了，我們本地端的不是最新版的，因此我們要先輸入 <code>git pull</code> 把我們本地端檔案和遠端檔案合併，若有發生 遠端衝突時，要解決完成再<code>git add .</code> <code>git commit -m &#39;merge&#39;</code>，才算完成</p>
-</li>
-</ul>
 ]]></content>
       <categories>
         <category>GitHub</category>
