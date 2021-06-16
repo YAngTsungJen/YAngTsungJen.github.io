@@ -346,59 +346,6 @@
       </tags>
   </entry>
   <entry>
-    <title>GitHub 的金鑰匙</title>
-    <url>/2021/04/28/github/GitHub-%E7%9A%84%E9%87%91%E9%91%B0%E5%8C%99/</url>
-    <content><![CDATA[<h2 id="到底如何設定GitHub-的-SSH-呢？"><a href="#到底如何設定GitHub-的-SSH-呢？" class="headerlink" title="到底如何設定GitHub 的 SSH 呢？"></a>到底如何設定GitHub 的 SSH 呢？</h2><span id="more"></span>
-<p>步驟一：<br>首先，要先用終端機移動到本機（也就是你這台電腦）的 .ssh上<br>例如：我終端機前面那行字為<code>yang@yangcongrendeMacBook-Air</code>，所以輸入<br><code>cd /Users/yang/.ssh</code>，移動到.ssh上。</p>
-<p>步驟二：在<code>yang@yangcongrendeMacBook-Air .ssh</code>的位置上，再輸入<br><code>cat id_rsa.pub</code>這串指令，會跑出一段密碼。將這段密碼貼到gitHub的設定上面（最前面ssh-rsa不用貼）。<br>所以簡單來說，只要輸入兩行指令(yang是我的電腦名字，要自己改掉哦)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /Users/yang/.ssh</span><br><span class="line">cat id_rsa.pub</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>GitHub</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>commit 衝突</title>
-    <url>/2021/05/04/github/commit-%E8%A1%9D%E7%AA%81/</url>
-    <content><![CDATA[<h2 id="本地-commit-衝突"><a href="#本地-commit-衝突" class="headerlink" title="本地 commit 衝突"></a>本地 commit 衝突</h2><ol>
-<li>原因：<blockquote>
-<p>兩個 commit 在合併時，檔案裡的某一行有重複修改到時，就會觸發</p>
-</blockquote>
-</li>
-<li>解決：<ul>
-<li>因為分支修改到同一行的code，所以當 merge 時，會出現 commit 衝突。</li>
-<li>解決完在工作目錄的 commit 衝突，需要再<code>git add .</code> <code>git commit -m &#39;merge&#39;</code>，才算完成。<span id="more"></span></li>
-</ul>
-</li>
-</ol>
-<h2 id="遠端-commit-衝突"><a href="#遠端-commit-衝突" class="headerlink" title="遠端 commit 衝突"></a>遠端 commit 衝突</h2><ul>
-<li><p>故事理解：</p>
-<blockquote>
-<ol>
-<li>A 跟 B 一起在同個 repo 開發，只有一條 master 線</li>
-<li>A 先部署了一個 commit 到 master</li>
-<li>B 更新了第六行程式碼，並在下班前立馬 push</li>
-<li>A 也改了第六行，但他效率比較差，下班後 push 時才發現，B 這個ㄐ歪人先 push 了！</li>
-<li>A 只好先 pull 下來，結果竟然跟自己的 commit 衝突</li>
-<li>A 只好邊罵髒話，邊解決衝突，整理好後再 push</li>
-</ol>
-</blockquote>
-</li>
-<li><p>解決：<br>  因為 B 的檔案已在遠端上了，我們本地端的不是最新版的，因此我們要先輸入 <code>git pull</code> 把我們本地端檔案和遠端檔案合併，若有發生 遠端衝突時，要解決完成再<code>git add .</code> <code>git commit -m &#39;merge&#39;</code>，才算完成</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>GitHub</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git 還原技巧</title>
     <url>/2021/04/29/github/git-%E9%82%84%E5%8E%9F%E6%8A%80%E5%B7%A7/</url>
     <content><![CDATA[<h2 id="還原技巧"><a href="#還原技巧" class="headerlink" title="還原技巧"></a>還原技巧</h2><p>新增檔案時</p>
@@ -453,40 +400,35 @@
       </tags>
   </entry>
   <entry>
-    <title>gitHub flow 版控流程</title>
-    <url>/2021/05/04/github/gitHub-flow-%E7%89%88%E6%8E%A7%E6%B5%81%E7%A8%8B/</url>
-    <content><![CDATA[<h2 id="常見合作流程"><a href="#常見合作流程" class="headerlink" title="常見合作流程"></a>常見合作流程</h2><ol>
-<li><a href="https://nvie.com/posts/a-successful-git-branching-model/">git flow</a></li>
-<li><a href="https://guides.github.com/introduction/flow/">gitHub flow</a></li>
-<li>gitlab flow</li>
-</ol>
-<h2 id="gitHub-flow-流程"><a href="#gitHub-flow-流程" class="headerlink" title="gitHub flow 流程"></a>gitHub flow 流程</h2><pre><code>1. 在 master 建立分支來新增功能
-2. 開始開發功能
-3. 發 PR (Pull Request) 申請合併
-4. 討論與檢視程式碼
-5. 部署(Deploy)
-6. 合併(Merge)
-</code></pre>
-<span id="more"></span>
-<h2 id="gitHub-flow-規範"><a href="#gitHub-flow-規範" class="headerlink" title="gitHub flow 規範"></a>gitHub flow 規範</h2><ul>
-<li>任何在 master 上的 commit 都是可以部署的</li>
-<li>假使程式碼需要討論，請 PR 後在 comment 進行討論</li>
+    <title>commit 衝突</title>
+    <url>/2021/05/04/github/commit-%E8%A1%9D%E7%AA%81/</url>
+    <content><![CDATA[<h2 id="本地-commit-衝突"><a href="#本地-commit-衝突" class="headerlink" title="本地 commit 衝突"></a>本地 commit 衝突</h2><ol>
+<li>原因：<blockquote>
+<p>兩個 commit 在合併時，檔案裡的某一行有重複修改到時，就會觸發</p>
+</blockquote>
+</li>
+<li>解決：<ul>
+<li>因為分支修改到同一行的code，所以當 merge 時，會出現 commit 衝突。</li>
+<li>解決完在工作目錄的 commit 衝突，需要再<code>git add .</code> <code>git commit -m &#39;merge&#39;</code>，才算完成。<span id="more"></span></li>
 </ul>
-<h2 id="協作流程"><a href="#協作流程" class="headerlink" title="協作流程"></a>協作流程</h2><ol>
-<li>本地建立 node 、Git 環境，增加 (.gitignore)</li>
-<li>commit 1：建立環境 <code>git commit -m &#39;建立環境&#39;</code></li>
-<li>commit 2：修改 title <code>git commit -m &#39;修改 title&#39;</code></li>
-<li>新增 dev branch。    <code>git branch dev</code>  在master時，先創立一個分支</li>
-<li>新增 GitHub Repo，並 push    連接github</li>
-<li>新增 heroku Repo，並 push.   連結heroku</li>
-<li>B 抓 GitHub dev 分支，並開 feature 分支<br><code>git clone</code> <code>git branch feature</code> <code>git push origin feature</code>  </li>
-<li>commit 兩個後，push feature 分支，並開 pr 請求合併 dev</li>
-<li>管理員 A 合併</li>
-<li>C 抓 GitHub dev 分支，並開 feature 分支</li>
-<li>commit 兩個後，push feature 分支，並開 pr 請求合併 dev</li>
-<li>管理員 A 合併，並抓下來看內容都 ok</li>
-<li>管理員 A fetch 下來，用 master 合併 origin/dev 分支，並 push 到 GitHub<br>用git fetch把遠端資料全部桌下來</li>
+</li>
 </ol>
+<h2 id="遠端-commit-衝突"><a href="#遠端-commit-衝突" class="headerlink" title="遠端 commit 衝突"></a>遠端 commit 衝突</h2><ul>
+<li><p>故事理解：</p>
+<blockquote>
+<ol>
+<li>A 跟 B 一起在同個 repo 開發，只有一條 master 線</li>
+<li>A 先部署了一個 commit 到 master</li>
+<li>B 更新了第六行程式碼，並在下班前立馬 push</li>
+<li>A 也改了第六行，但他效率比較差，下班後 push 時才發現，B 這個ㄐ歪人先 push 了！</li>
+<li>A 只好先 pull 下來，結果竟然跟自己的 commit 衝突</li>
+<li>A 只好邊罵髒話，邊解決衝突，整理好後再 push</li>
+</ol>
+</blockquote>
+</li>
+<li><p>解決：<br>  因為 B 的檔案已在遠端上了，我們本地端的不是最新版的，因此我們要先輸入 <code>git pull</code> 把我們本地端檔案和遠端檔案合併，若有發生 遠端衝突時，要解決完成再<code>git add .</code> <code>git commit -m &#39;merge&#39;</code>，才算完成</p>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>GitHub</category>
@@ -496,91 +438,32 @@
       </tags>
   </entry>
   <entry>
-    <title>什麼是 Git 呢？</title>
-    <url>/2021/04/29/github/%E4%BB%80%E9%BA%BC%E6%98%AF-Git-%E5%91%A2%EF%BC%9F/</url>
-    <content><![CDATA[<h2 id="為什麼要學-Git-？"><a href="#為什麼要學-Git-？" class="headerlink" title="為什麼要學 Git ？"></a>為什麼要學 Git ？</h2><ul>
-<li>Git 是程式碼版本控制軟體</li>
-<li>用網頁版型介紹 Git 的差異</li>
-</ul>
-<h2 id="Git-與-Github-是什麼？-差在哪呢？"><a href="#Git-與-Github-是什麼？-差在哪呢？" class="headerlink" title="Git 與 Github 是什麼？ 差在哪呢？"></a>Git 與 Github 是什麼？ 差在哪呢？</h2><ul>
-<li><p>Git 是一個分散式版本控制軟體，可藉由它產生一個*儲存庫( git Repository)*。</p>
-</li>
-<li><p>Github：支援 git 程式碼存取和<em>遠端托管儲存庫</em>的平台服務</p>
-</li>
-<li><p>關係像是本地端有一個 index.html，但可以放到 dropbox、Google Drive 進行雲端託管</p>
-<span id="more"></span>
-<h2 id="熱門遠端儲存庫-Github-VS-Bitbucket-VS-Gitlab"><a href="#熱門遠端儲存庫-Github-VS-Bitbucket-VS-Gitlab" class="headerlink" title="熱門遠端儲存庫(Github VS Bitbucket VS Gitlab)"></a>熱門遠端儲存庫(Github VS Bitbucket VS Gitlab)</h2></li>
-<li><p><a href="https://github.com/">GitHub</a>：擁有 GitHub Pages 功能，可擁有私人數據庫，免費方案是 3 人以下</p>
-</li>
-<li><p><a href="https://bitbucket.org/product/pricing">Bitbucket</a>：可擁有私人數據庫，免費方案是五人以下團隊</p>
-</li>
-<li><p><a href="https://about.gitlab.com/">GitLab</a>：自架 Git 伺服器，有提供 web 視覺化管理介面，常用於企業內部開發</p>
-</li>
-</ul>
-<p>懶人包解釋：</p>
-<ul>
-<li>公司專案的小型團隊可用 Bitbucket</li>
-<li>想要有一個公開對外網站的話，可用 GitHub</li>
-</ul>
-<p>我們可以在終端機上透過 git 指令來控制程式碼，也可以用圖形化介面的GuI來管理程式碼（SourceTree）。</p>
-<h2 id="軟體與服務安裝"><a href="#軟體與服務安裝" class="headerlink" title="軟體與服務安裝"></a>軟體與服務安裝</h2><p>在學習版控前，可以將以下軟體進行安裝與註冊。</p>
-<ul>
-<li><a href="https://git-scm.com/">Git 軟體安裝</a> - 首頁 Download</li>
-<li><a href="https://github.com/">Github 會員註冊</a></li>
-<li><a href="https://www.sourcetreeapp.com/">SourceTree 軟體安裝</a></li>
-</ul>
-<h2 id="為什麼總是在git或是gitHub上使用得不順利呢？"><a href="#為什麼總是在git或是gitHub上使用得不順利呢？" class="headerlink" title="為什麼總是在git或是gitHub上使用得不順利呢？"></a>為什麼總是在git或是gitHub上使用得不順利呢？</h2><p>主要是因為我們不太熟悉指令，因為在使用上，有時還是需要透過指令，才能在操作時更加順利。<br>以下為常見的bash指令</p>
-<p><img src="2021-04-27_1.28.38.png" alt="bash指令"></p>
-<h2 id="嘗試-Git-是否有安裝成功"><a href="#嘗試-Git-是否有安裝成功" class="headerlink" title="嘗試 Git 是否有安裝成功"></a>嘗試 Git 是否有安裝成功</h2><p>在終端機裡面輸入：<code>git --version</code></p>
-<h2 id="個人電腦環境設定"><a href="#個人電腦環境設定" class="headerlink" title="個人電腦環境設定"></a>個人電腦環境設定</h2><p>設定個人資料</p>
-<ul>
-<li>輸入姓名：<code>git config --global user.name &quot;mike&quot;</code></li>
-<li>輸入個人的 email：<code>git config --global user.email &quot;q2336xxx@gmail.com&quot;</code></li>
-<li>查詢 git 設定內容：<code>git config --list</code></li>
-</ul>
-<h2 id="基本指令架構"><a href="#基本指令架構" class="headerlink" title="基本指令架構"></a>基本指令架構</h2><p><img src="image1.jpg" alt="指令架構"></p>
-<h2 id="Git-常用指令"><a href="#Git-常用指令" class="headerlink" title="Git 常用指令"></a>Git 常用指令</h2><ul>
-<li>初始化數據庫： <code>git init</code></li>
-<li><a href="https://helpx.adobe.com/tw/x-productkb/global/show-hidden-files-folders-extensions.html">開啟 .git 隱藏檔方案</a><ul>
-<li>Mac<ul>
-<li>command+shift+.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>查詢當前狀態：<code>git status</code><ul>
-<li>要將檔案加入到指定資料夾</li>
-</ul>
-</li>
-<li>將檔案加入到索引：<code>git add .</code></li>
-<li>將索引檔案變成一個更新(commit)：<code>git commit -m &quot;新增網頁環境&quot;</code></li>
-<li>觀察 commit 歷史紀錄： <code>git log</code></li>
-<li>下載遠端數據庫： <code>git clone 數據庫網址</code></li>
-<li>更新遠端數據庫： <code>git push origin master</code></li>
-</ul>
-<h2 id="GitHub-基本上傳步驟"><a href="#GitHub-基本上傳步驟" class="headerlink" title="GitHub 基本上傳步驟"></a>GitHub 基本上傳步驟</h2><ol>
-<li><p>在本地端建立資料夾</p>
-</li>
-<li><p>自資料夾上先建立初始化數據庫： <code>git init</code></p>
-</li>
-<li><p>將檔案加入到索引<code>git add .</code></p>
-</li>
-<li><p>將索引檔案變成一個更新(commit)：<code>git commit -m &quot;新增網頁環境&quot;</code></p>
-</li>
-<li><p>在gitHub 上建立一個遠端數據庫 new repositories</p>
-</li>
-<li><p>選擇第二點，因為我們已經在本地端建立好數據庫了，因此，將遠端數據庫的連結跟本地端做連結。 <code>git remote add origin git@github.com:/Github.git</code></p>
-</li>
-<li><p>回到 gitHub 上，去 setting 裡，開啟 gitHub Pages 頁面。</p>
-</li>
-</ol>
+    <title>發 PR 流程</title>
+    <url>/2021/05/04/github/%E7%99%BC-PR-%E6%B5%81%E7%A8%8B/</url>
+    <content><![CDATA[<h2 id="GitHub-pull-request-請求流程"><a href="#GitHub-pull-request-請求流程" class="headerlink" title="GitHub pull request(請求流程)"></a>GitHub pull request(請求流程)</h2><blockquote>
+<p>找到專案 -&gt; fork 專案到自己 gitHub 上 -&gt; 把檔案 git clone 到自己桌面 -&gt; 開啟新分支<code>git branch feature</code> -&gt; commit 自己資料 -&gt; <code>git push origin feature</code>到遠端 -&gt; 點擊 pull request -&gt; New pull request -&gt;確認是將feature分支 pr 到專案的 dev -&gt; 若沒有跳出 merge conflict -&gt; scuuess</p>
+</blockquote>
 ]]></content>
       <categories>
         <category>GitHub</category>
       </categories>
       <tags>
         <tag>GitHub</tag>
-        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GitHub 的金鑰匙</title>
+    <url>/2021/04/28/github/GitHub-%E7%9A%84%E9%87%91%E9%91%B0%E5%8C%99/</url>
+    <content><![CDATA[<h2 id="到底如何設定GitHub-的-SSH-呢？"><a href="#到底如何設定GitHub-的-SSH-呢？" class="headerlink" title="到底如何設定GitHub 的 SSH 呢？"></a>到底如何設定GitHub 的 SSH 呢？</h2><span id="more"></span>
+<p>步驟一：<br>首先，要先用終端機移動到本機（也就是你這台電腦）的 .ssh上<br>例如：我終端機前面那行字為<code>yang@yangcongrendeMacBook-Air</code>，所以輸入<br><code>cd /Users/yang/.ssh</code>，移動到.ssh上。</p>
+<p>步驟二：在<code>yang@yangcongrendeMacBook-Air .ssh</code>的位置上，再輸入<br><code>cat id_rsa.pub</code>這串指令，會跑出一段密碼。將這段密碼貼到gitHub的設定上面（最前面ssh-rsa不用貼）。<br>所以簡單來說，只要輸入兩行指令(yang是我的電腦名字，要自己改掉哦)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /Users/yang/.ssh</span><br><span class="line">cat id_rsa.pub</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>GitHub</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
       </tags>
   </entry>
   <entry>
@@ -658,11 +541,40 @@
       </tags>
   </entry>
   <entry>
-    <title>發 PR 流程</title>
-    <url>/2021/05/04/github/%E7%99%BC-PR-%E6%B5%81%E7%A8%8B/</url>
-    <content><![CDATA[<h2 id="GitHub-pull-request-請求流程"><a href="#GitHub-pull-request-請求流程" class="headerlink" title="GitHub pull request(請求流程)"></a>GitHub pull request(請求流程)</h2><blockquote>
-<p>找到專案 -&gt; fork 專案到自己 gitHub 上 -&gt; 把檔案 git clone 到自己桌面 -&gt; 開啟新分支<code>git branch feature</code> -&gt; commit 自己資料 -&gt; <code>git push origin feature</code>到遠端 -&gt; 點擊 pull request -&gt; New pull request -&gt;確認是將feature分支 pr 到專案的 dev -&gt; 若沒有跳出 merge conflict -&gt; scuuess</p>
-</blockquote>
+    <title>gitHub flow 版控流程</title>
+    <url>/2021/05/04/github/gitHub-flow-%E7%89%88%E6%8E%A7%E6%B5%81%E7%A8%8B/</url>
+    <content><![CDATA[<h2 id="常見合作流程"><a href="#常見合作流程" class="headerlink" title="常見合作流程"></a>常見合作流程</h2><ol>
+<li><a href="https://nvie.com/posts/a-successful-git-branching-model/">git flow</a></li>
+<li><a href="https://guides.github.com/introduction/flow/">gitHub flow</a></li>
+<li>gitlab flow</li>
+</ol>
+<h2 id="gitHub-flow-流程"><a href="#gitHub-flow-流程" class="headerlink" title="gitHub flow 流程"></a>gitHub flow 流程</h2><pre><code>1. 在 master 建立分支來新增功能
+2. 開始開發功能
+3. 發 PR (Pull Request) 申請合併
+4. 討論與檢視程式碼
+5. 部署(Deploy)
+6. 合併(Merge)
+</code></pre>
+<span id="more"></span>
+<h2 id="gitHub-flow-規範"><a href="#gitHub-flow-規範" class="headerlink" title="gitHub flow 規範"></a>gitHub flow 規範</h2><ul>
+<li>任何在 master 上的 commit 都是可以部署的</li>
+<li>假使程式碼需要討論，請 PR 後在 comment 進行討論</li>
+</ul>
+<h2 id="協作流程"><a href="#協作流程" class="headerlink" title="協作流程"></a>協作流程</h2><ol>
+<li>本地建立 node 、Git 環境，增加 (.gitignore)</li>
+<li>commit 1：建立環境 <code>git commit -m &#39;建立環境&#39;</code></li>
+<li>commit 2：修改 title <code>git commit -m &#39;修改 title&#39;</code></li>
+<li>新增 dev branch。    <code>git branch dev</code>  在master時，先創立一個分支</li>
+<li>新增 GitHub Repo，並 push    連接github</li>
+<li>新增 heroku Repo，並 push.   連結heroku</li>
+<li>B 抓 GitHub dev 分支，並開 feature 分支<br><code>git clone</code> <code>git branch feature</code> <code>git push origin feature</code>  </li>
+<li>commit 兩個後，push feature 分支，並開 pr 請求合併 dev</li>
+<li>管理員 A 合併</li>
+<li>C 抓 GitHub dev 分支，並開 feature 分支</li>
+<li>commit 兩個後，push feature 分支，並開 pr 請求合併 dev</li>
+<li>管理員 A 合併，並抓下來看內容都 ok</li>
+<li>管理員 A fetch 下來，用 master 合併 origin/dev 分支，並 push 到 GitHub<br>用git fetch把遠端資料全部桌下來</li>
+</ol>
 ]]></content>
       <categories>
         <category>GitHub</category>
@@ -900,6 +812,94 @@
       </categories>
       <tags>
         <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>什麼是 Git 呢？</title>
+    <url>/2021/04/29/github/%E4%BB%80%E9%BA%BC%E6%98%AF-Git-%E5%91%A2%EF%BC%9F/</url>
+    <content><![CDATA[<h2 id="為什麼要學-Git-？"><a href="#為什麼要學-Git-？" class="headerlink" title="為什麼要學 Git ？"></a>為什麼要學 Git ？</h2><ul>
+<li>Git 是程式碼版本控制軟體</li>
+<li>用網頁版型介紹 Git 的差異</li>
+</ul>
+<h2 id="Git-與-Github-是什麼？-差在哪呢？"><a href="#Git-與-Github-是什麼？-差在哪呢？" class="headerlink" title="Git 與 Github 是什麼？ 差在哪呢？"></a>Git 與 Github 是什麼？ 差在哪呢？</h2><ul>
+<li><p>Git 是一個分散式版本控制軟體，可藉由它產生一個*儲存庫( git Repository)*。</p>
+</li>
+<li><p>Github：支援 git 程式碼存取和<em>遠端托管儲存庫</em>的平台服務</p>
+</li>
+<li><p>關係像是本地端有一個 index.html，但可以放到 dropbox、Google Drive 進行雲端託管</p>
+<span id="more"></span>
+<h2 id="熱門遠端儲存庫-Github-VS-Bitbucket-VS-Gitlab"><a href="#熱門遠端儲存庫-Github-VS-Bitbucket-VS-Gitlab" class="headerlink" title="熱門遠端儲存庫(Github VS Bitbucket VS Gitlab)"></a>熱門遠端儲存庫(Github VS Bitbucket VS Gitlab)</h2></li>
+<li><p><a href="https://github.com/">GitHub</a>：擁有 GitHub Pages 功能，可擁有私人數據庫，免費方案是 3 人以下</p>
+</li>
+<li><p><a href="https://bitbucket.org/product/pricing">Bitbucket</a>：可擁有私人數據庫，免費方案是五人以下團隊</p>
+</li>
+<li><p><a href="https://about.gitlab.com/">GitLab</a>：自架 Git 伺服器，有提供 web 視覺化管理介面，常用於企業內部開發</p>
+</li>
+</ul>
+<p>懶人包解釋：</p>
+<ul>
+<li>公司專案的小型團隊可用 Bitbucket</li>
+<li>想要有一個公開對外網站的話，可用 GitHub</li>
+</ul>
+<p>我們可以在終端機上透過 git 指令來控制程式碼，也可以用圖形化介面的GuI來管理程式碼（SourceTree）。</p>
+<h2 id="軟體與服務安裝"><a href="#軟體與服務安裝" class="headerlink" title="軟體與服務安裝"></a>軟體與服務安裝</h2><p>在學習版控前，可以將以下軟體進行安裝與註冊。</p>
+<ul>
+<li><a href="https://git-scm.com/">Git 軟體安裝</a> - 首頁 Download</li>
+<li><a href="https://github.com/">Github 會員註冊</a></li>
+<li><a href="https://www.sourcetreeapp.com/">SourceTree 軟體安裝</a></li>
+</ul>
+<h2 id="為什麼總是在git或是gitHub上使用得不順利呢？"><a href="#為什麼總是在git或是gitHub上使用得不順利呢？" class="headerlink" title="為什麼總是在git或是gitHub上使用得不順利呢？"></a>為什麼總是在git或是gitHub上使用得不順利呢？</h2><p>主要是因為我們不太熟悉指令，因為在使用上，有時還是需要透過指令，才能在操作時更加順利。<br>以下為常見的bash指令</p>
+<p><img src="2021-04-27_1.28.38.png" alt="bash指令"></p>
+<h2 id="嘗試-Git-是否有安裝成功"><a href="#嘗試-Git-是否有安裝成功" class="headerlink" title="嘗試 Git 是否有安裝成功"></a>嘗試 Git 是否有安裝成功</h2><p>在終端機裡面輸入：<code>git --version</code></p>
+<h2 id="個人電腦環境設定"><a href="#個人電腦環境設定" class="headerlink" title="個人電腦環境設定"></a>個人電腦環境設定</h2><p>設定個人資料</p>
+<ul>
+<li>輸入姓名：<code>git config --global user.name &quot;mike&quot;</code></li>
+<li>輸入個人的 email：<code>git config --global user.email &quot;q2336xxx@gmail.com&quot;</code></li>
+<li>查詢 git 設定內容：<code>git config --list</code></li>
+</ul>
+<h2 id="基本指令架構"><a href="#基本指令架構" class="headerlink" title="基本指令架構"></a>基本指令架構</h2><p><img src="image1.jpg" alt="指令架構"></p>
+<h2 id="Git-常用指令"><a href="#Git-常用指令" class="headerlink" title="Git 常用指令"></a>Git 常用指令</h2><ul>
+<li>初始化數據庫： <code>git init</code></li>
+<li><a href="https://helpx.adobe.com/tw/x-productkb/global/show-hidden-files-folders-extensions.html">開啟 .git 隱藏檔方案</a><ul>
+<li>Mac<ul>
+<li>command+shift+.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>查詢當前狀態：<code>git status</code><ul>
+<li>要將檔案加入到指定資料夾</li>
+</ul>
+</li>
+<li>將檔案加入到索引：<code>git add .</code></li>
+<li>將索引檔案變成一個更新(commit)：<code>git commit -m &quot;新增網頁環境&quot;</code></li>
+<li>觀察 commit 歷史紀錄： <code>git log</code></li>
+<li>下載遠端數據庫： <code>git clone 數據庫網址</code></li>
+<li>更新遠端數據庫： <code>git push origin master</code></li>
+</ul>
+<h2 id="GitHub-基本上傳步驟"><a href="#GitHub-基本上傳步驟" class="headerlink" title="GitHub 基本上傳步驟"></a>GitHub 基本上傳步驟</h2><ol>
+<li><p>在本地端建立資料夾</p>
+</li>
+<li><p>自資料夾上先建立初始化數據庫： <code>git init</code></p>
+</li>
+<li><p>將檔案加入到索引<code>git add .</code></p>
+</li>
+<li><p>將索引檔案變成一個更新(commit)：<code>git commit -m &quot;新增網頁環境&quot;</code></p>
+</li>
+<li><p>在gitHub 上建立一個遠端數據庫 new repositories</p>
+</li>
+<li><p>選擇第二點，因為我們已經在本地端建立好數據庫了，因此，將遠端數據庫的連結跟本地端做連結。 <code>git remote add origin git@github.com:/Github.git</code></p>
+</li>
+<li><p>回到 gitHub 上，去 setting 裡，開啟 gitHub Pages 頁面。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>GitHub</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
