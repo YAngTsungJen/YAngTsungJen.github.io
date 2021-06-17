@@ -750,35 +750,27 @@
   <entry>
     <title>邏輯判斷之術</title>
     <url>/2021/06/15/javascript/%E9%82%8F%E8%BC%AF%E5%88%A4%E6%96%B7%E4%B9%8B%E8%A1%93/</url>
-    <content><![CDATA[<h2 id="比較運算子、邏輯運算子"><a href="#比較運算子、邏輯運算子" class="headerlink" title="比較運算子、邏輯運算子"></a>比較運算子、邏輯運算子</h2><ul>
-<li><p>比較運算子： &gt;、&gt;=、&lt;、&lt;=、兩個 ==</p>
-</li>
-<li><p>兩個等於與三個等於的差異</p>
-</li>
-<li><p>邏輯運算子：&amp;&amp;、||</p>
-</li>
-<li><p>if：是否需要帶雨具</p>
-</li>
-<li><p>if、else if：是否滿 18 歲</p>
-</li>
-<li><p>if+變數累積：好寶寶徽章+=1</p>
-</li>
-<li><p>if、else if、else：想吃什麼東西？最後選擇到 else</p>
-</li>
+    <content><![CDATA[<h2 id="流程圖與-whimsical"><a href="#流程圖與-whimsical" class="headerlink" title="流程圖與 whimsical"></a>流程圖與 <a href="https://whimsical.com/4oYtsHWjADWsieeNrjY1Xa">whimsical</a></h2><p>首先，當我們在一開始學習 JavaScript 時，總是遇到題目就卡住，明明就知道觀念了，但合起來變成情境題，卻不知道如何下手。這時，我們要知道，我們可以畫流程圖，把題目理清楚，一個步驟一個步驟做拆解。可以用以下方法練習畫流程圖。</p>
+<ul>
+<li>步驟一：定義程式目的</li>
+<li>步驟二：設定初始資料狀態</li>
+<li>步驟三：依照目的進行任務拆解<span id="more"></span></li>
 </ul>
-<h2 id="情境拆解"><a href="#情境拆解" class="headerlink" title="情境拆解"></a>情境拆解</h2><ul>
-<li><p>步驟一：定義程式目的</p>
-</li>
-<li><p>步驟二：設定初始資料狀態</p>
-</li>
-<li><p>步驟三：依照目的進行任務拆解</p>
-</li>
-<li><p>if 常用在 如果、假如、是否、判斷的情境上</p>
-</li>
-<li><p>剪刀石頭布</p>
-</li>
+<h2 id="比較運算子、邏輯運算子"><a href="#比較運算子、邏輯運算子" class="headerlink" title="比較運算子、邏輯運算子"></a>比較運算子、邏輯運算子</h2><ul>
+<li>比較運算子： &gt;、&gt;=、&lt;、&lt;=、兩個 ==</li>
+<li>兩個等於與三個等於的差異：差在三個 === 為嚴謹模式，型別必須也要相等</li>
+<li>邏輯運算子：&amp;&amp;（And）、||（Or）</li>
 </ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(playerA == playerB)&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">&#x27;平手&#x27;</span>)</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>((playerA == <span class="string">&#x27;石頭&#x27;</span> &amp;&amp; playerB == <span class="string">&#x27;剪刀&#x27;</span>) || (playerA == <span class="string">&#x27;剪刀&#x27;</span> &amp;&amp; playerB ==<span class="string">&#x27;布&#x27;</span>) || (playerA ==<span class="string">&#x27;布&#x27;</span> &amp;&amp; playerB ==<span class="string">&#x27;石頭&#x27;</span>))&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">&#x27;playerA win&#x27;</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">&#x27;playerB win&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="if、else-if、else"><a href="#if、else-if、else" class="headerlink" title="if、else if、else"></a>if、else if、else</h2><ul>
+<li>if：是否需要帶雨具</li>
+<li>if、else if：是否滿 18 歲</li>
+<li>if+變數累積：徽章+=1</li>
+<li>if、else if、else：想吃什麼東西？最後選擇到 else</li>
+</ul>
+<h2 id="剪刀石頭布"><a href="#剪刀石頭布" class="headerlink" title="剪刀石頭布"></a>剪刀石頭布</h2><blockquote>
+<p>以結果論</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(playerA == playerB)&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">&#x27;平手&#x27;</span>)</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>((playerA == <span class="string">&#x27;石頭&#x27;</span> &amp;&amp; playerB == <span class="string">&#x27;剪刀&#x27;</span>) || (playerA == <span class="string">&#x27;剪刀&#x27;</span> &amp;&amp; playerB ==<span class="string">&#x27;布&#x27;</span>) || (playerA ==<span class="string">&#x27;布&#x27;</span> &amp;&amp; playerB ==<span class="string">&#x27;石頭&#x27;</span>))&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">&#x27;playerA win&#x27;</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">&#x27;playerB win&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>JavaScript</category>
@@ -932,6 +924,63 @@
       <tags>
         <tag>六角學院</tag>
         <tag>心得</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>物件跟陣列資料處理之術</title>
+    <url>/2021/06/18/javascript/%E7%89%A9%E4%BB%B6%E8%B7%9F%E9%99%A3%E5%88%97%E8%B3%87%E6%96%99%E8%99%95%E7%90%86%E4%B9%8B%E8%A1%93/</url>
+    <content><![CDATA[<h2 id="陣列"><a href="#陣列" class="headerlink" title="陣列"></a>陣列</h2><blockquote>
+<p>學習重點：</p>
+</blockquote>
+<ul>
+<li>基本設定：讀取陣列、抓取長度(length)</li>
+<li>陣列方法：push、unshift、pop、slice、splice</li>
+<li>進階陣列運用：filter、map、forEach …<span id="more"></span></li>
+</ul>
+<ol>
+<li><p>陣列基本設定</p>
+<ul>
+<li><p>這是一串陣列</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [<span class="string">&quot;red&quot;</span>,<span class="string">&quot;black&quot;</span>,<span class="string">&quot;pink&quot;</span>];</span><br></pre></td></tr></table></figure></li>
+<li><p>讀取陣列</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> liaoLikeColor = colors[<span class="number">2</span>];</span><br><span class="line"><span class="comment">// liaoLikeColor ＝ pink</span></span><br></pre></td></tr></table></figure></li>
+<li><p>抓取長度(length)</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [<span class="string">&quot;red&quot;</span>,<span class="string">&quot;black&quot;</span>,<span class="string">&quot;pink&quot;</span>];</span><br><span class="line"><span class="keyword">let</span> colorsLength = colors.length;</span><br><span class="line"><span class="comment">// colorsLength = 3</span></span><br></pre></td></tr></table></figure></li>
+<li><p>寫入陣列（將資料依照位置寫入空陣列裡）</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [];</span><br><span class="line"><span class="comment">// 寫入</span></span><br><span class="line">colors[<span class="number">0</span>] = <span class="string">&#x27;blue&#x27;</span>;</span><br><span class="line">colors[<span class="number">2</span>] = <span class="string">&#x27;red&#x27;</span>;</span><br><span class="line">colors[<span class="number">4</span>] = <span class="string">&#x27;pink&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(colors);</span><br><span class="line"><span class="comment">// colors[3] 會是undefined</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>陣列方法運用</p>
+<ul>
+<li><p>push寫入資料（在最後面做增加）</p>
+<ul>
+<li><p>可以單筆 or 多筆寫入</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [<span class="string">&#x27;blue&#x27;</span>,<span class="string">&#x27;red&#x27;</span>];</span><br><span class="line">colors.push(<span class="string">&#x27;black&#x27;</span>,<span class="string">&#x27;pink&#x27;</span>,<span class="string">&#x27;orange&#x27;</span>)</span><br><span class="line"><span class="comment">// colors = [&#x27;blue&#x27;,&#x27;red&#x27;,&#x27;black&#x27;,&#x27;pink&#x27;,&#x27;orange&#x27;];</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>unshift寫入資料（在最前面做增加）</p>
+<ul>
+<li><p>可以單筆 or 多筆寫入</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [<span class="string">&#x27;blue&#x27;</span>,<span class="string">&#x27;red&#x27;</span>];</span><br><span class="line">colors.unshift(<span class="string">&#x27;black&#x27;</span>,<span class="string">&#x27;pink&#x27;</span>,<span class="string">&#x27;orange&#x27;</span>)</span><br><span class="line"><span class="comment">// colors = [&#x27;black&#x27;,&#x27;pink&#x27;,&#x27;orange&#x27;,&#x27;blue&#x27;,&#x27;red&#x27;];</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>pop刪除資料（刪除最後一筆）</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [<span class="string">&#x27;blue&#x27;</span>,<span class="string">&#x27;red&#x27;</span>];</span><br><span class="line">colors.pop();</span><br><span class="line"><span class="comment">// blue </span></span><br></pre></td></tr></table></figure></li>
+<li><p>shift刪除資料（刪除最前面一筆）</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [<span class="string">&#x27;blue&#x27;</span>,<span class="string">&#x27;red&#x27;</span>];</span><br><span class="line">colors.shift();</span><br><span class="line"><span class="comment">// red </span></span><br></pre></td></tr></table></figure></li>
+<li><p>splice刪除資料（刪除指定資料）</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [<span class="string">&#x27;blue&#x27;</span>,<span class="string">&#x27;red&#x27;</span>,<span class="string">&#x27;yelllow&#x27;</span>];</span><br><span class="line">colors.splice(<span class="number">1</span>,<span class="number">1</span>);<span class="comment">//[&#x27;blue&#x27;,&#x27;yellow&#x27;]</span></span><br><span class="line">          <span class="comment">//起始位置 ,要往後刪除幾筆資料（包括自己）</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>進階陣列運用</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
 </search>
