@@ -933,37 +933,33 @@
 <p>學習重點：</p>
 </blockquote>
 <ul>
-<li>基本設定：讀取陣列、抓取長度(length)</li>
-<li>陣列方法：push、unshift、pop、slice、splice</li>
-<li>進階陣列運用：filter、map、forEach …<span id="more"></span></li>
-</ul>
-<ol>
-<li><p>陣列基本設定</p>
-<ul>
+<li><p>基本設定：讀取陣列、抓取長度(length)</p>
+</li>
+<li><p>陣列方法：push、unshift、pop、slice、splice</p>
+</li>
+<li><p>進階陣列運用：filter、map、forEach …</p>
+<span id="more"></span>
+<h3 id="陣列基本設定"><a href="#陣列基本設定" class="headerlink" title="陣列基本設定"></a>陣列基本設定</h3></li>
 <li><p>這是一串陣列</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [<span class="string">&quot;red&quot;</span>,<span class="string">&quot;black&quot;</span>,<span class="string">&quot;pink&quot;</span>];</span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [<span class="string">&quot;red&quot;</span>,<span class="string">&quot;black&quot;</span>,<span class="string">&quot;pink&quot;</span>];</span><br></pre></td></tr></table></figure></li>
 <li><p>讀取陣列</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> liaoLikeColor = colors[<span class="number">2</span>];</span><br><span class="line"><span class="comment">// liaoLikeColor ＝ pink</span></span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> liaoLikeColor = colors[<span class="number">2</span>];</span><br><span class="line"><span class="comment">// liaoLikeColor ＝ pink</span></span><br></pre></td></tr></table></figure></li>
 <li><p>抓取長度(length)</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [<span class="string">&quot;red&quot;</span>,<span class="string">&quot;black&quot;</span>,<span class="string">&quot;pink&quot;</span>];</span><br><span class="line"><span class="keyword">let</span> colorsLength = colors.length;</span><br><span class="line"><span class="comment">// colorsLength = 3</span></span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [<span class="string">&quot;red&quot;</span>,<span class="string">&quot;black&quot;</span>,<span class="string">&quot;pink&quot;</span>];</span><br><span class="line"><span class="keyword">let</span> colorsLength = colors.length;</span><br><span class="line"><span class="comment">// colorsLength = 3</span></span><br></pre></td></tr></table></figure></li>
 <li><p>寫入陣列（將資料依照位置寫入空陣列裡）</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [];</span><br><span class="line"><span class="comment">// 寫入</span></span><br><span class="line">colors[<span class="number">0</span>] = <span class="string">&#x27;blue&#x27;</span>;</span><br><span class="line">colors[<span class="number">2</span>] = <span class="string">&#x27;red&#x27;</span>;</span><br><span class="line">colors[<span class="number">4</span>] = <span class="string">&#x27;pink&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(colors);</span><br><span class="line"><span class="comment">// colors[3] 會是undefined</span></span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [];</span><br><span class="line"><span class="comment">// 寫入</span></span><br><span class="line">colors[<span class="number">0</span>] = <span class="string">&#x27;blue&#x27;</span>;</span><br><span class="line">colors[<span class="number">2</span>] = <span class="string">&#x27;red&#x27;</span>;</span><br><span class="line">colors[<span class="number">4</span>] = <span class="string">&#x27;pink&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(colors);</span><br><span class="line"><span class="comment">// colors[3] 會是undefined</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li><p>陣列方法運用</p>
-<ul>
+<h3 id="陣列方法運用"><a href="#陣列方法運用" class="headerlink" title="陣列方法運用"></a>陣列方法運用</h3><ul>
 <li><p>push寫入資料（在最後面做增加）</p>
-<ul>
-<li><p>可以單筆 or 多筆寫入</p>
+<blockquote>
+<p>可以單筆 or 多筆寫入</p>
+</blockquote>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [<span class="string">&#x27;blue&#x27;</span>,<span class="string">&#x27;red&#x27;</span>];</span><br><span class="line">colors.push(<span class="string">&#x27;black&#x27;</span>,<span class="string">&#x27;pink&#x27;</span>,<span class="string">&#x27;orange&#x27;</span>)</span><br><span class="line"><span class="comment">// colors = [&#x27;blue&#x27;,&#x27;red&#x27;,&#x27;black&#x27;,&#x27;pink&#x27;,&#x27;orange&#x27;];</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
 <li><p>unshift寫入資料（在最前面做增加）</p>
-<ul>
-<li><p>可以單筆 or 多筆寫入</p>
+<blockquote>
+<p>可以單筆 or 多筆寫入</p>
+</blockquote>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [<span class="string">&#x27;blue&#x27;</span>,<span class="string">&#x27;red&#x27;</span>];</span><br><span class="line">colors.unshift(<span class="string">&#x27;black&#x27;</span>,<span class="string">&#x27;pink&#x27;</span>,<span class="string">&#x27;orange&#x27;</span>)</span><br><span class="line"><span class="comment">// colors = [&#x27;black&#x27;,&#x27;pink&#x27;,&#x27;orange&#x27;,&#x27;blue&#x27;,&#x27;red&#x27;];</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
 <li><p>pop刪除資料（刪除最後一筆）</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [<span class="string">&#x27;blue&#x27;</span>,<span class="string">&#x27;red&#x27;</span>];</span><br><span class="line">colors.pop();</span><br><span class="line"><span class="comment">// blue </span></span><br></pre></td></tr></table></figure></li>
 <li><p>shift刪除資料（刪除最前面一筆）</p>
@@ -971,11 +967,7 @@
 <li><p>splice刪除資料（刪除指定資料）</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [<span class="string">&#x27;blue&#x27;</span>,<span class="string">&#x27;red&#x27;</span>,<span class="string">&#x27;yelllow&#x27;</span>];</span><br><span class="line">colors.splice(<span class="number">1</span>,<span class="number">1</span>);<span class="comment">//[&#x27;blue&#x27;,&#x27;yellow&#x27;]</span></span><br><span class="line">          <span class="comment">//起始位置 ,要往後刪除幾筆資料（包括自己）</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li><p>進階陣列運用</p>
-</li>
-</ol>
-]]></content>
+<h3 id="進階陣列運用"><a href="#進階陣列運用" class="headerlink" title="進階陣列運用"></a>進階陣列運用</h3>]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
