@@ -1,6 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Boostrap 5 環境建立</title>
+    <url>/2021/05/24/Bootstrap/Boostrap-5-%E7%92%B0%E5%A2%83%E5%BB%BA%E7%AB%8B/</url>
+    <content><![CDATA[<h2 id="What-is-Bootstrap"><a href="#What-is-Bootstrap" class="headerlink" title="What is Bootstrap?"></a>What is Bootstrap?</h2><p>Bootstrap 是一個由 HTML、CSS 和 JavaScript 寫成的前端框架，核心的設計目標是達成RWD響應式與行動優先，也就是讓你的網站排版可以自動適應螢幕大小。它預先做好一套網站的基礎建設，讓你能在框架的基礎上進行開發，不需要再去煩惱瑣碎的設定。</p>
+<span id="more"></span>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
+<li><p>透過 cdn</p>
+<ul>
+<li><p>CSS → 於<code>&lt;head&gt;</code>裡引入</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">integrity</span>=<span class="string">&quot;sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1&quot;</span> <span class="attr">crossorigin</span>=<span class="string">&quot;anonymous&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>JavaScript -&gt; 於<code>&lt;/body&gt;</code>的結尾處引入</p>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js&quot;</span> <span class="attr">integrity</span>=<span class="string">&quot;sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW&quot;</span> <span class="attr">crossorigin</span>=<span class="string">&quot;anonymous&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><a href="https://getbootstrap.com/docs/5.0/getting-started/download/">本地下載（直接下載到本機）</a></p>
+<ul>
+<li>看到「Compiled CSS and JS」，按下下載。解壓縮檔案後，嵌入以下檔案即可使用：<ul>
+<li><code>css/bootstrap.min.css</code></li>
+<li><code>js/bootstrap.bundle.min.js</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="使用方式的優-缺點"><a href="#使用方式的優-缺點" class="headerlink" title="使用方式的優/缺點"></a>使用方式的優/缺點</h2><ol>
+<li><p>使用cdn的優/缺點</p>
+<ul>
+<li>載入速度快</li>
+<li>省流量</li>
+<li>掛掉就會跟著一起掛掉</li>
+<li>版本要更新</li>
+</ul>
+</li>
+<li><p>使用本地的優/缺點</p>
+<ul>
+<li>可客製化</li>
+<li>太大包跑比較久<br>補：也可以下載個別功能不用整包下載</li>
+</ul>
+</li>
+</ol>
+<h2 id="如何確認-BootStrap-有安裝成功？"><a href="#如何確認-BootStrap-有安裝成功？" class="headerlink" title="如何確認 BootStrap 有安裝成功？"></a>如何確認 BootStrap 有安裝成功？</h2><p>可以裝設一些 BootStrap 撰寫好的套件來玩玩，像是 按鈕、互動視窗或是卡片。</p>
+<h2 id="CSS-Reset"><a href="#CSS-Reset" class="headerlink" title="CSS Reset"></a>CSS Reset</h2><p>清除瀏覽器預設樣式，boostrap本身內就涵有使用<a href="https://bootstrap5.hexschool.com/docs/5.0/content/reboot/">css reset</a>，因此不用另外去載入。</p>
+<p>參考資料：<a href="https://www.youtube.com/watch?v=WGu0F7nmQFQ">bootstrap新手實戰營</a></p>
+]]></content>
+      <categories>
+        <category>bootstrap</category>
+      </categories>
+      <tags>
+        <tag>bootstrap</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Bootstrap-元件介紹</title>
+    <url>/2021/06/02/Bootstrap/Bootstrap-%E5%85%83%E4%BB%B6%E4%BB%8B%E7%B4%B9/</url>
+    <content><![CDATA[<h2 id="互動式窗（Modal）"><a href="#互動式窗（Modal）" class="headerlink" title="互動式窗（Modal）"></a>互動式窗（Modal）</h2><ul>
+<li>用在設計稿右上的登入註冊</li>
+<li>按鈕的<code>data-bs-target</code>和 Modal 的 id 相同，就可以為一組互動式窗。</li>
+<li>若在 Modal最外層加入 <code>data-bs-backdrop=&quot;static&quot; data-bs-keyboard=&quot;false&quot;</code>，可以將背景設置為靜態，互動視窗不會因為點擊背景而關閉。<span id="more"></span></li>
+<li>滾動長內容：透過在 <code>.modal-dialog</code> 中加入 <code>.modal-dialog-scrollable</code> 來創建一個 body 可滾動互動視窗</li>
+<li>垂直置中：加入 .modal-dialog-centered 到 .modal-dialog 來使互動視窗垂直置中。</li>
+<li>有 <code>aria</code>的標籤：是給無障礙人士是使用，通常做無障礙網站是必備的。</li>
+<li><a href="https://ithelp.ithome.com.tw/users/20108045/ironman/2454">30篇好文連結</a></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Button trigger modal --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-primary&quot;</span> <span class="attr">data-bs-toggle</span>=<span class="string">&quot;modal&quot;</span> <span class="attr">data-bs-target</span>=<span class="string">&quot;#exampleModal&quot;</span>&gt;</span></span><br><span class="line">  Launch demo modal</span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Modal --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal fade&quot;</span> <span class="attr">data-bs-backdrop</span>=<span class="string">&quot;static&quot;</span> <span class="attr">data-bs-keyboard</span>=<span class="string">&quot;false&quot;</span> <span class="attr">id</span>=<span class="string">&quot;exampleModal&quot;</span> <span class="attr">tabindex</span>=<span class="string">&quot;-1&quot;</span> <span class="attr">aria-labelledby</span>=<span class="string">&quot;exampleModalLabel&quot;</span> <span class="attr">aria-hidden</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-dialog&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-content&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-header&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h5</span> <span class="attr">class</span>=<span class="string">&quot;modal-title&quot;</span> <span class="attr">id</span>=<span class="string">&quot;exampleModalLabel&quot;</span>&gt;</span>Modal title<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn-close&quot;</span> <span class="attr">data-bs-dismiss</span>=<span class="string">&quot;modal&quot;</span> <span class="attr">aria-label</span>=<span class="string">&quot;Close&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-body&quot;</span>&gt;</span></span><br><span class="line">        ...</span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-footer&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-secondary&quot;</span> <span class="attr">data-bs-dismiss</span>=<span class="string">&quot;modal&quot;</span>&gt;</span>Close<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-primary&quot;</span>&gt;</span>Save changes<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h2 id="折疊（Collapse）"><a href="#折疊（Collapse）" class="headerlink" title="折疊（Collapse）"></a>折疊（Collapse）</h2><ul>
+<li>使用a連結：<code>data-bs-toggle=&quot;collapse&quot; href=&quot;#collapseExample&quot;</code>和內容的 <code>id=&quot;collapseExample&quot;</code>為一組，可以產生折疊效果。</li>
+<li>使用button：<code>data-bs-toggle=&quot;collapse&quot; data-bs-target=&quot;#collapseExample&quot;</code>和內容的 <code>id=&quot;collapseExample&quot;</code>為一組，可以產生折疊效果。</li>
+<li><code>role=&quot;button&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;collapseExample&quot;</code>為無礙障人士使用。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-primary&quot;</span> <span class="attr">data-bs-toggle</span>=<span class="string">&quot;collapse&quot;</span> <span class="attr">href</span>=<span class="string">&quot;#collapseExample&quot;</span> <span class="attr">role</span>=<span class="string">&quot;button&quot;</span> <span class="attr">aria-expanded</span>=<span class="string">&quot;false&quot;</span> <span class="attr">aria-controls</span>=<span class="string">&quot;collapseExample&quot;</span>&gt;</span></span><br><span class="line">    問題一</span><br><span class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;collapse&quot;</span> <span class="attr">id</span>=<span class="string">&quot;collapseExample&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;card card-body&quot;</span>&gt;</span></span><br><span class="line">      問題一答案</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-primary&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">data-bs-toggle</span>=<span class="string">&quot;collapse&quot;</span> <span class="attr">data-bs-target</span>=<span class="string">&quot;#collapseExample2&quot;</span> <span class="attr">aria-expanded</span>=<span class="string">&quot;false&quot;</span> <span class="attr">aria-controls</span>=<span class="string">&quot;collapseExample&quot;</span>&gt;</span></span><br><span class="line">    問題二</span><br><span class="line">  <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;collapse&quot;</span> <span class="attr">id</span>=<span class="string">&quot;collapseExample2&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;card card-body&quot;</span>&gt;</span></span><br><span class="line">      問題二答案</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="導覽與頁籤（Navs-and-tabs）"><a href="#導覽與頁籤（Navs-and-tabs）" class="headerlink" title="導覽與頁籤（Navs and tabs）"></a>導覽與頁籤（Navs and tabs）</h2><ul>
+<li>使用button：<code>data-bs-toggle=&quot;tab&quot; data-bs-target=&quot;#home&quot;</code> 和 <code>id=&quot;home&quot;</code>為一組</li>
+<li>使用a連結：<code>data-bs-toggle=&quot;tab&quot; href=&quot;#home&quot;</code>和<code>id=&quot;home&quot;</code>為一組</li>
+<li>active ：若要改變請上下都改。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Nav tabs --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;nav&quot;</span> <span class="attr">id</span>=<span class="string">&quot;myTab&quot;</span> <span class="attr">role</span>=<span class="string">&quot;tablist&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;nav-item&quot;</span> <span class="attr">role</span>=<span class="string">&quot;presentation&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;nav-link active&quot;</span> <span class="attr">id</span>=<span class="string">&quot;home-tab&quot;</span> <span class="attr">data-bs-toggle</span>=<span class="string">&quot;tab&quot;</span> <span class="attr">data-bs-target</span>=<span class="string">&quot;#home&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">role</span>=<span class="string">&quot;tab&quot;</span> <span class="attr">aria-controls</span>=<span class="string">&quot;home&quot;</span> <span class="attr">aria-selected</span>=<span class="string">&quot;true&quot;</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;nav-item&quot;</span> <span class="attr">role</span>=<span class="string">&quot;presentation&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;nav-link&quot;</span> <span class="attr">id</span>=<span class="string">&quot;profile-tab&quot;</span> <span class="attr">data-bs-toggle</span>=<span class="string">&quot;tab&quot;</span> <span class="attr">data-bs-target</span>=<span class="string">&quot;#profile&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">role</span>=<span class="string">&quot;tab&quot;</span> <span class="attr">aria-controls</span>=<span class="string">&quot;profile&quot;</span> <span class="attr">aria-selected</span>=<span class="string">&quot;false&quot;</span>&gt;</span>Profile<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;nav-item&quot;</span> <span class="attr">role</span>=<span class="string">&quot;presentation&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;nav-link&quot;</span> <span class="attr">id</span>=<span class="string">&quot;messages-tab&quot;</span> <span class="attr">data-bs-toggle</span>=<span class="string">&quot;tab&quot;</span> <span class="attr">data-bs-target</span>=<span class="string">&quot;#messages&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">role</span>=<span class="string">&quot;tab&quot;</span> <span class="attr">aria-controls</span>=<span class="string">&quot;messages&quot;</span> <span class="attr">aria-selected</span>=<span class="string">&quot;false&quot;</span>&gt;</span>Messages<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;nav-item&quot;</span> <span class="attr">role</span>=<span class="string">&quot;presentation&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;nav-link&quot;</span> <span class="attr">id</span>=<span class="string">&quot;settings-tab&quot;</span> <span class="attr">data-bs-toggle</span>=<span class="string">&quot;tab&quot;</span> <span class="attr">data-bs-target</span>=<span class="string">&quot;#settings&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">role</span>=<span class="string">&quot;tab&quot;</span> <span class="attr">aria-controls</span>=<span class="string">&quot;settings&quot;</span> <span class="attr">aria-selected</span>=<span class="string">&quot;false&quot;</span>&gt;</span>Settings<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Tab panes --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tab-content&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tab-pane active&quot;</span> <span class="attr">id</span>=<span class="string">&quot;home&quot;</span> <span class="attr">role</span>=<span class="string">&quot;tabpanel&quot;</span> <span class="attr">aria-labelledby</span>=<span class="string">&quot;home-tab&quot;</span>&gt;</span>home<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tab-pane&quot;</span> <span class="attr">id</span>=<span class="string">&quot;profile&quot;</span> <span class="attr">role</span>=<span class="string">&quot;tabpanel&quot;</span> <span class="attr">aria-labelledby</span>=<span class="string">&quot;profile-tab&quot;</span>&gt;</span>profile<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tab-pane&quot;</span> <span class="attr">id</span>=<span class="string">&quot;messages&quot;</span> <span class="attr">role</span>=<span class="string">&quot;tabpanel&quot;</span> <span class="attr">aria-labelledby</span>=<span class="string">&quot;messages-tab&quot;</span>&gt;</span>messages<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tab-pane&quot;</span> <span class="attr">id</span>=<span class="string">&quot;settings&quot;</span> <span class="attr">role</span>=<span class="string">&quot;tabpanel&quot;</span> <span class="attr">aria-labelledby</span>=<span class="string">&quot;settings-tab&quot;</span>&gt;</span>settings<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="卡片（Cards）"><a href="#卡片（Cards）" class="headerlink" title="卡片（Cards）"></a>卡片（Cards）</h2><ul>
+<li>去除gutters：使用 .g-0 移除網格的 gutters</li>
+<li>斷點設計：使用 .col-md-* 類別讓卡片在 md 斷點之後呈現水平</li>
+<li>圖片部分可以使用背景圖 <code>background: url()</code>或是 img標籤來呈現</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;card mb-3&quot;</span> <span class="attr">style</span>=<span class="string">&quot;max-width: 540px;&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row g-0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-md-4&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">&quot;img-fluid&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://fakeimg.pl/180x250/&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-md-8&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;card-body&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h5</span> <span class="attr">class</span>=<span class="string">&quot;card-title&quot;</span>&gt;</span>Card title<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;card-text&quot;</span>&gt;</span>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;card-text&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">small</span> <span class="attr">class</span>=<span class="string">&quot;text-muted&quot;</span>&gt;</span>Last updated 3 mins ago<span class="tag">&lt;/<span class="name">small</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;card mb-3&quot;</span> <span class="attr">style</span>=<span class="string">&quot;max-width: 540px;&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row g-0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-md-4&quot;</span> <span class="attr">style</span>=<span class="string">&quot;background: url(https://miro.medium.com/max/676/1*XEgA1TTwXa5AvAdw40GFow.png) center / contain;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-md-8&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;card-body&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h5</span> <span class="attr">class</span>=<span class="string">&quot;card-title&quot;</span>&gt;</span>Card title<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;card-text&quot;</span>&gt;</span>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;card-text&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">small</span> <span class="attr">class</span>=<span class="string">&quot;text-muted&quot;</span>&gt;</span>Last updated 3 mins ago<span class="tag">&lt;/<span class="name">small</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>bootstrap</category>
+      </categories>
+      <tags>
+        <tag>bootstrap</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>BS5 格線系統（Grid System）</title>
     <url>/2021/05/24/Bootstrap/BS5-%E6%A0%BC%E7%B7%9A%E7%B3%BB%E7%B5%B1%EF%BC%88Grid-System%EF%BC%89/</url>
     <content><![CDATA[<h2 id="什麼是格線系統？"><a href="#什麼是格線系統？" class="headerlink" title="什麼是格線系統？"></a>什麼是格線系統？</h2><ul>
@@ -161,99 +254,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Boostrap 5 環境建立</title>
-    <url>/2021/05/24/Bootstrap/Boostrap-5-%E7%92%B0%E5%A2%83%E5%BB%BA%E7%AB%8B/</url>
-    <content><![CDATA[<h2 id="What-is-Bootstrap"><a href="#What-is-Bootstrap" class="headerlink" title="What is Bootstrap?"></a>What is Bootstrap?</h2><p>Bootstrap 是一個由 HTML、CSS 和 JavaScript 寫成的前端框架，核心的設計目標是達成RWD響應式與行動優先，也就是讓你的網站排版可以自動適應螢幕大小。它預先做好一套網站的基礎建設，讓你能在框架的基礎上進行開發，不需要再去煩惱瑣碎的設定。</p>
-<span id="more"></span>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
-<li><p>透過 cdn</p>
-<ul>
-<li><p>CSS → 於<code>&lt;head&gt;</code>裡引入</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">integrity</span>=<span class="string">&quot;sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1&quot;</span> <span class="attr">crossorigin</span>=<span class="string">&quot;anonymous&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>JavaScript -&gt; 於<code>&lt;/body&gt;</code>的結尾處引入</p>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js&quot;</span> <span class="attr">integrity</span>=<span class="string">&quot;sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW&quot;</span> <span class="attr">crossorigin</span>=<span class="string">&quot;anonymous&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><a href="https://getbootstrap.com/docs/5.0/getting-started/download/">本地下載（直接下載到本機）</a></p>
-<ul>
-<li>看到「Compiled CSS and JS」，按下下載。解壓縮檔案後，嵌入以下檔案即可使用：<ul>
-<li><code>css/bootstrap.min.css</code></li>
-<li><code>js/bootstrap.bundle.min.js</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="使用方式的優-缺點"><a href="#使用方式的優-缺點" class="headerlink" title="使用方式的優/缺點"></a>使用方式的優/缺點</h2><ol>
-<li><p>使用cdn的優/缺點</p>
-<ul>
-<li>載入速度快</li>
-<li>省流量</li>
-<li>掛掉就會跟著一起掛掉</li>
-<li>版本要更新</li>
-</ul>
-</li>
-<li><p>使用本地的優/缺點</p>
-<ul>
-<li>可客製化</li>
-<li>太大包跑比較久<br>補：也可以下載個別功能不用整包下載</li>
-</ul>
-</li>
-</ol>
-<h2 id="如何確認-BootStrap-有安裝成功？"><a href="#如何確認-BootStrap-有安裝成功？" class="headerlink" title="如何確認 BootStrap 有安裝成功？"></a>如何確認 BootStrap 有安裝成功？</h2><p>可以裝設一些 BootStrap 撰寫好的套件來玩玩，像是 按鈕、互動視窗或是卡片。</p>
-<h2 id="CSS-Reset"><a href="#CSS-Reset" class="headerlink" title="CSS Reset"></a>CSS Reset</h2><p>清除瀏覽器預設樣式，boostrap本身內就涵有使用<a href="https://bootstrap5.hexschool.com/docs/5.0/content/reboot/">css reset</a>，因此不用另外去載入。</p>
-<p>參考資料：<a href="https://www.youtube.com/watch?v=WGu0F7nmQFQ">bootstrap新手實戰營</a></p>
-]]></content>
-      <categories>
-        <category>bootstrap</category>
-      </categories>
-      <tags>
-        <tag>bootstrap</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Bootstrap-元件介紹</title>
-    <url>/2021/06/02/Bootstrap/Bootstrap-%E5%85%83%E4%BB%B6%E4%BB%8B%E7%B4%B9/</url>
-    <content><![CDATA[<h2 id="互動式窗（Modal）"><a href="#互動式窗（Modal）" class="headerlink" title="互動式窗（Modal）"></a>互動式窗（Modal）</h2><ul>
-<li>用在設計稿右上的登入註冊</li>
-<li>按鈕的<code>data-bs-target</code>和 Modal 的 id 相同，就可以為一組互動式窗。</li>
-<li>若在 Modal最外層加入 <code>data-bs-backdrop=&quot;static&quot; data-bs-keyboard=&quot;false&quot;</code>，可以將背景設置為靜態，互動視窗不會因為點擊背景而關閉。<span id="more"></span></li>
-<li>滾動長內容：透過在 <code>.modal-dialog</code> 中加入 <code>.modal-dialog-scrollable</code> 來創建一個 body 可滾動互動視窗</li>
-<li>垂直置中：加入 .modal-dialog-centered 到 .modal-dialog 來使互動視窗垂直置中。</li>
-<li>有 <code>aria</code>的標籤：是給無障礙人士是使用，通常做無障礙網站是必備的。</li>
-<li><a href="https://ithelp.ithome.com.tw/users/20108045/ironman/2454">30篇好文連結</a></li>
-</ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Button trigger modal --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-primary&quot;</span> <span class="attr">data-bs-toggle</span>=<span class="string">&quot;modal&quot;</span> <span class="attr">data-bs-target</span>=<span class="string">&quot;#exampleModal&quot;</span>&gt;</span></span><br><span class="line">  Launch demo modal</span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Modal --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal fade&quot;</span> <span class="attr">data-bs-backdrop</span>=<span class="string">&quot;static&quot;</span> <span class="attr">data-bs-keyboard</span>=<span class="string">&quot;false&quot;</span> <span class="attr">id</span>=<span class="string">&quot;exampleModal&quot;</span> <span class="attr">tabindex</span>=<span class="string">&quot;-1&quot;</span> <span class="attr">aria-labelledby</span>=<span class="string">&quot;exampleModalLabel&quot;</span> <span class="attr">aria-hidden</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-dialog&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-content&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-header&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h5</span> <span class="attr">class</span>=<span class="string">&quot;modal-title&quot;</span> <span class="attr">id</span>=<span class="string">&quot;exampleModalLabel&quot;</span>&gt;</span>Modal title<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn-close&quot;</span> <span class="attr">data-bs-dismiss</span>=<span class="string">&quot;modal&quot;</span> <span class="attr">aria-label</span>=<span class="string">&quot;Close&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-body&quot;</span>&gt;</span></span><br><span class="line">        ...</span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-footer&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-secondary&quot;</span> <span class="attr">data-bs-dismiss</span>=<span class="string">&quot;modal&quot;</span>&gt;</span>Close<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-primary&quot;</span>&gt;</span>Save changes<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<h2 id="折疊（Collapse）"><a href="#折疊（Collapse）" class="headerlink" title="折疊（Collapse）"></a>折疊（Collapse）</h2><ul>
-<li>使用a連結：<code>data-bs-toggle=&quot;collapse&quot; href=&quot;#collapseExample&quot;</code>和內容的 <code>id=&quot;collapseExample&quot;</code>為一組，可以產生折疊效果。</li>
-<li>使用button：<code>data-bs-toggle=&quot;collapse&quot; data-bs-target=&quot;#collapseExample&quot;</code>和內容的 <code>id=&quot;collapseExample&quot;</code>為一組，可以產生折疊效果。</li>
-<li><code>role=&quot;button&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;collapseExample&quot;</code>為無礙障人士使用。</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-primary&quot;</span> <span class="attr">data-bs-toggle</span>=<span class="string">&quot;collapse&quot;</span> <span class="attr">href</span>=<span class="string">&quot;#collapseExample&quot;</span> <span class="attr">role</span>=<span class="string">&quot;button&quot;</span> <span class="attr">aria-expanded</span>=<span class="string">&quot;false&quot;</span> <span class="attr">aria-controls</span>=<span class="string">&quot;collapseExample&quot;</span>&gt;</span></span><br><span class="line">    問題一</span><br><span class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;collapse&quot;</span> <span class="attr">id</span>=<span class="string">&quot;collapseExample&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;card card-body&quot;</span>&gt;</span></span><br><span class="line">      問題一答案</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-primary&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">data-bs-toggle</span>=<span class="string">&quot;collapse&quot;</span> <span class="attr">data-bs-target</span>=<span class="string">&quot;#collapseExample2&quot;</span> <span class="attr">aria-expanded</span>=<span class="string">&quot;false&quot;</span> <span class="attr">aria-controls</span>=<span class="string">&quot;collapseExample&quot;</span>&gt;</span></span><br><span class="line">    問題二</span><br><span class="line">  <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;collapse&quot;</span> <span class="attr">id</span>=<span class="string">&quot;collapseExample2&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;card card-body&quot;</span>&gt;</span></span><br><span class="line">      問題二答案</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="導覽與頁籤（Navs-and-tabs）"><a href="#導覽與頁籤（Navs-and-tabs）" class="headerlink" title="導覽與頁籤（Navs and tabs）"></a>導覽與頁籤（Navs and tabs）</h2><ul>
-<li>使用button：<code>data-bs-toggle=&quot;tab&quot; data-bs-target=&quot;#home&quot;</code> 和 <code>id=&quot;home&quot;</code>為一組</li>
-<li>使用a連結：<code>data-bs-toggle=&quot;tab&quot; href=&quot;#home&quot;</code>和<code>id=&quot;home&quot;</code>為一組</li>
-<li>active ：若要改變請上下都改。</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Nav tabs --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;nav&quot;</span> <span class="attr">id</span>=<span class="string">&quot;myTab&quot;</span> <span class="attr">role</span>=<span class="string">&quot;tablist&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;nav-item&quot;</span> <span class="attr">role</span>=<span class="string">&quot;presentation&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;nav-link active&quot;</span> <span class="attr">id</span>=<span class="string">&quot;home-tab&quot;</span> <span class="attr">data-bs-toggle</span>=<span class="string">&quot;tab&quot;</span> <span class="attr">data-bs-target</span>=<span class="string">&quot;#home&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">role</span>=<span class="string">&quot;tab&quot;</span> <span class="attr">aria-controls</span>=<span class="string">&quot;home&quot;</span> <span class="attr">aria-selected</span>=<span class="string">&quot;true&quot;</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;nav-item&quot;</span> <span class="attr">role</span>=<span class="string">&quot;presentation&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;nav-link&quot;</span> <span class="attr">id</span>=<span class="string">&quot;profile-tab&quot;</span> <span class="attr">data-bs-toggle</span>=<span class="string">&quot;tab&quot;</span> <span class="attr">data-bs-target</span>=<span class="string">&quot;#profile&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">role</span>=<span class="string">&quot;tab&quot;</span> <span class="attr">aria-controls</span>=<span class="string">&quot;profile&quot;</span> <span class="attr">aria-selected</span>=<span class="string">&quot;false&quot;</span>&gt;</span>Profile<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;nav-item&quot;</span> <span class="attr">role</span>=<span class="string">&quot;presentation&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;nav-link&quot;</span> <span class="attr">id</span>=<span class="string">&quot;messages-tab&quot;</span> <span class="attr">data-bs-toggle</span>=<span class="string">&quot;tab&quot;</span> <span class="attr">data-bs-target</span>=<span class="string">&quot;#messages&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">role</span>=<span class="string">&quot;tab&quot;</span> <span class="attr">aria-controls</span>=<span class="string">&quot;messages&quot;</span> <span class="attr">aria-selected</span>=<span class="string">&quot;false&quot;</span>&gt;</span>Messages<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;nav-item&quot;</span> <span class="attr">role</span>=<span class="string">&quot;presentation&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;nav-link&quot;</span> <span class="attr">id</span>=<span class="string">&quot;settings-tab&quot;</span> <span class="attr">data-bs-toggle</span>=<span class="string">&quot;tab&quot;</span> <span class="attr">data-bs-target</span>=<span class="string">&quot;#settings&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">role</span>=<span class="string">&quot;tab&quot;</span> <span class="attr">aria-controls</span>=<span class="string">&quot;settings&quot;</span> <span class="attr">aria-selected</span>=<span class="string">&quot;false&quot;</span>&gt;</span>Settings<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Tab panes --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tab-content&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tab-pane active&quot;</span> <span class="attr">id</span>=<span class="string">&quot;home&quot;</span> <span class="attr">role</span>=<span class="string">&quot;tabpanel&quot;</span> <span class="attr">aria-labelledby</span>=<span class="string">&quot;home-tab&quot;</span>&gt;</span>home<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tab-pane&quot;</span> <span class="attr">id</span>=<span class="string">&quot;profile&quot;</span> <span class="attr">role</span>=<span class="string">&quot;tabpanel&quot;</span> <span class="attr">aria-labelledby</span>=<span class="string">&quot;profile-tab&quot;</span>&gt;</span>profile<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tab-pane&quot;</span> <span class="attr">id</span>=<span class="string">&quot;messages&quot;</span> <span class="attr">role</span>=<span class="string">&quot;tabpanel&quot;</span> <span class="attr">aria-labelledby</span>=<span class="string">&quot;messages-tab&quot;</span>&gt;</span>messages<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tab-pane&quot;</span> <span class="attr">id</span>=<span class="string">&quot;settings&quot;</span> <span class="attr">role</span>=<span class="string">&quot;tabpanel&quot;</span> <span class="attr">aria-labelledby</span>=<span class="string">&quot;settings-tab&quot;</span>&gt;</span>settings<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="卡片（Cards）"><a href="#卡片（Cards）" class="headerlink" title="卡片（Cards）"></a>卡片（Cards）</h2><ul>
-<li>去除gutters：使用 .g-0 移除網格的 gutters</li>
-<li>斷點設計：使用 .col-md-* 類別讓卡片在 md 斷點之後呈現水平</li>
-<li>圖片部分可以使用背景圖 <code>background: url()</code>或是 img標籤來呈現</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;card mb-3&quot;</span> <span class="attr">style</span>=<span class="string">&quot;max-width: 540px;&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row g-0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-md-4&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">&quot;img-fluid&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://fakeimg.pl/180x250/&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-md-8&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;card-body&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h5</span> <span class="attr">class</span>=<span class="string">&quot;card-title&quot;</span>&gt;</span>Card title<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;card-text&quot;</span>&gt;</span>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;card-text&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">small</span> <span class="attr">class</span>=<span class="string">&quot;text-muted&quot;</span>&gt;</span>Last updated 3 mins ago<span class="tag">&lt;/<span class="name">small</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;card mb-3&quot;</span> <span class="attr">style</span>=<span class="string">&quot;max-width: 540px;&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row g-0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-md-4&quot;</span> <span class="attr">style</span>=<span class="string">&quot;background: url(https://miro.medium.com/max/676/1*XEgA1TTwXa5AvAdw40GFow.png) center / contain;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-md-8&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;card-body&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h5</span> <span class="attr">class</span>=<span class="string">&quot;card-title&quot;</span>&gt;</span>Card title<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;card-text&quot;</span>&gt;</span>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;card-text&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">small</span> <span class="attr">class</span>=<span class="string">&quot;text-muted&quot;</span>&gt;</span>Last updated 3 mins ago<span class="tag">&lt;/<span class="name">small</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>bootstrap</category>
-      </categories>
-      <tags>
-        <tag>bootstrap</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Bootstrap-客製化</title>
     <url>/2021/06/03/Bootstrap/Bootstrap-%E5%AE%A2%E8%A3%BD%E5%8C%96/</url>
     <content><![CDATA[<h2 id="Bootstrap-客製化"><a href="#Bootstrap-客製化" class="headerlink" title="Bootstrap-客製化"></a>Bootstrap-客製化</h2><blockquote>
@@ -361,44 +361,6 @@
       </tags>
   </entry>
   <entry>
-    <title>commit 衝突</title>
-    <url>/2021/05/04/github/commit-%E8%A1%9D%E7%AA%81/</url>
-    <content><![CDATA[<h2 id="本地-commit-衝突"><a href="#本地-commit-衝突" class="headerlink" title="本地 commit 衝突"></a>本地 commit 衝突</h2><ol>
-<li>原因：<blockquote>
-<p>兩個 commit 在合併時，檔案裡的某一行有重複修改到時，就會觸發</p>
-</blockquote>
-</li>
-<li>解決：<ul>
-<li>因為分支修改到同一行的code，所以當 merge 時，會出現 commit 衝突。</li>
-<li>解決完在工作目錄的 commit 衝突，需要再<code>git add .</code> <code>git commit -m &#39;merge&#39;</code>，才算完成。<span id="more"></span></li>
-</ul>
-</li>
-</ol>
-<h2 id="遠端-commit-衝突"><a href="#遠端-commit-衝突" class="headerlink" title="遠端 commit 衝突"></a>遠端 commit 衝突</h2><ul>
-<li><p>故事理解：</p>
-<blockquote>
-<ol>
-<li>A 跟 B 一起在同個 repo 開發，只有一條 master 線</li>
-<li>A 先部署了一個 commit 到 master</li>
-<li>B 更新了第六行程式碼，並在下班前立馬 push</li>
-<li>A 也改了第六行，但他效率比較差，下班後 push 時才發現，B 這個ㄐ歪人先 push 了！</li>
-<li>A 只好先 pull 下來，結果竟然跟自己的 commit 衝突</li>
-<li>A 只好邊罵髒話，邊解決衝突，整理好後再 push</li>
-</ol>
-</blockquote>
-</li>
-<li><p>解決：<br>  因為 B 的檔案已在遠端上了，我們本地端的不是最新版的，因此我們要先輸入 <code>git pull</code> 把我們本地端檔案和遠端檔案合併，若有發生 遠端衝突時，要解決完成再<code>git add .</code> <code>git commit -m &#39;merge&#39;</code>，才算完成</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>GitHub</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git 還原技巧</title>
     <url>/2021/04/29/github/git-%E9%82%84%E5%8E%9F%E6%8A%80%E5%B7%A7/</url>
     <content><![CDATA[<h2 id="還原技巧"><a href="#還原技巧" class="headerlink" title="還原技巧"></a>還原技巧</h2><p>新增檔案時</p>
@@ -444,6 +406,44 @@
 <h2 id="checkout-與-reset-差異"><a href="#checkout-與-reset-差異" class="headerlink" title="checkout 與 reset 差異"></a>checkout 與 reset 差異</h2><pre><code>- checkout 是移動 HEAD
 - reset 是移動 branch 及HEAD
 </code></pre>
+]]></content>
+      <categories>
+        <category>GitHub</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>commit 衝突</title>
+    <url>/2021/05/04/github/commit-%E8%A1%9D%E7%AA%81/</url>
+    <content><![CDATA[<h2 id="本地-commit-衝突"><a href="#本地-commit-衝突" class="headerlink" title="本地 commit 衝突"></a>本地 commit 衝突</h2><ol>
+<li>原因：<blockquote>
+<p>兩個 commit 在合併時，檔案裡的某一行有重複修改到時，就會觸發</p>
+</blockquote>
+</li>
+<li>解決：<ul>
+<li>因為分支修改到同一行的code，所以當 merge 時，會出現 commit 衝突。</li>
+<li>解決完在工作目錄的 commit 衝突，需要再<code>git add .</code> <code>git commit -m &#39;merge&#39;</code>，才算完成。<span id="more"></span></li>
+</ul>
+</li>
+</ol>
+<h2 id="遠端-commit-衝突"><a href="#遠端-commit-衝突" class="headerlink" title="遠端 commit 衝突"></a>遠端 commit 衝突</h2><ul>
+<li><p>故事理解：</p>
+<blockquote>
+<ol>
+<li>A 跟 B 一起在同個 repo 開發，只有一條 master 線</li>
+<li>A 先部署了一個 commit 到 master</li>
+<li>B 更新了第六行程式碼，並在下班前立馬 push</li>
+<li>A 也改了第六行，但他效率比較差，下班後 push 時才發現，B 這個ㄐ歪人先 push 了！</li>
+<li>A 只好先 pull 下來，結果竟然跟自己的 commit 衝突</li>
+<li>A 只好邊罵髒話，邊解決衝突，整理好後再 push</li>
+</ol>
+</blockquote>
+</li>
+<li><p>解決：<br>  因為 B 的檔案已在遠端上了，我們本地端的不是最新版的，因此我們要先輸入 <code>git pull</code> 把我們本地端檔案和遠端檔案合併，若有發生 遠端衝突時，要解決完成再<code>git add .</code> <code>git commit -m &#39;merge&#39;</code>，才算完成</p>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>GitHub</category>
@@ -672,35 +672,24 @@
       </tags>
   </entry>
   <entry>
-    <title>JS 衝刺班心得分享</title>
-    <url>/2021/04/15/%E5%BF%83%E5%BE%97/JS-%E8%A1%9D%E5%88%BA%E7%8F%AD%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB/</url>
-    <content><![CDATA[<p><img src="https://images.unsplash.com/photo-1483859562288-7f9e4c80c1cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1961&q=80" alt="os"></p>
-<h2 id="不跨出舒適圈，怎麼知道自己的極限在哪？"><a href="#不跨出舒適圈，怎麼知道自己的極限在哪？" class="headerlink" title="不跨出舒適圈，怎麼知道自己的極限在哪？"></a>不跨出舒適圈，怎麼知道自己的極限在哪？</h2><p>你有沒有跟我一樣的問題？</p>
-<p>迷茫著<br>在程式路上，如行屍走肉般</p>
+    <title>常用 Js函式庫</title>
+    <url>/2021/04/19/javascript/%E5%B8%B8%E7%94%A8-Js%E5%87%BD%E5%BC%8F%E5%BA%AB/</url>
+    <content><![CDATA[<h2 id="函式庫整理"><a href="#函式庫整理" class="headerlink" title="函式庫整理"></a>函式庫整理</h2><h3 id="千分位"><a href="#千分位" class="headerlink" title="千分位"></a>千分位</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toThousands</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> parts = x.toString().split(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">  parts[<span class="number">0</span>] = parts[<span class="number">0</span>].replace(<span class="regexp">/\B(?=(\d&#123;3&#125;)+(?!\d))/g</span>, <span class="string">&quot;,&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> parts.join(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 
-<p>或許是沒有找到方向，那我給你跟我一樣的選擇，加入六角大家庭吧。</p>
-<p>學習過程中，不知不覺，喜歡上程式這個領域，過去一年自己總是悶著頭，一股腦兒栽在電腦前，東摸摸，西摸摸，很沒有時間觀念的學習程式，我也不知道我到底在幹嘛？<br>直到最近，我慢慢意識到我總不能無限制的自我學習，因此很果斷的加入這次的 JS 直播班。</p>
-<p>因為我知道自己有一個毛病，欠人在屁股後面追著你跑。</p>
-<h2 id="這兩個月到底學會什麼？"><a href="#這兩個月到底學會什麼？" class="headerlink" title="這兩個月到底學會什麼？"></a>這兩個月到底學會什麼？</h2><p>在這之前，已經先自己學習了 JＳ，所以一到四週基礎的課程還算好吸收，但在第五週之後，開始漸漸有難度了。</p>
-<p>第六堂：AJAX 操控伺服器之術<br>因為我對於 api 串接並沒有特別熟悉，所以就開始天天練習串接 api ，把寫法練到熟為止。課堂中，老師時常會以幽默風趣口吻，來做講解，所以偶爾能用這些零碎時間把不懂地方，馬上做即時發問。</p>
-<p>第七堂：第三方 JS 套件整合之術<br>這是我覺得這次課程中最難部分，在整合C3.js套件時，我必須先把 API 的資料做資料處理，考驗的是對於物件、陣列的整合運用。所以陣列、物件若不熟悉，沒有融會貫通，通常是會在這裡大大卡關。</p>
-<p>第八、九堂：API 講解<br>主要是對於 api 方法操控，考驗的是購物車的資料增加、刪除、修改及後端資料串接。<br>因此，只要能熟練的把 todoList 的範例，靈活寫出來，對於其他大大小小的串接專案，或許都不是問題了。</p>
-<h2 id="推薦的理由呢？"><a href="#推薦的理由呢？" class="headerlink" title="推薦的理由呢？"></a>推薦的理由呢？</h2><p>優勢在哪</p>
-<p>我想用圖片說明，可以更有信服力。</p>
-<h3 id="助教作業海…XD"><a href="#助教作業海…XD" class="headerlink" title="助教作業海…XD"></a>助教作業海…XD</h3><p>  <img src="https://i.imgur.com/fvkLhwF.png" alt="助教作業海"></p>
-<h3 id="解每日任務"><a href="#解每日任務" class="headerlink" title="解每日任務"></a>解每日任務</h3><p>  <img src="https://i.imgur.com/3FmKO1l.png" alt="解每日任務"></p>
-<h3 id="BMI-kata-盛況"><a href="#BMI-kata-盛況" class="headerlink" title="BMI kata 盛況"></a>BMI kata 盛況</h3><p>  <img src="https://i.imgur.com/elaBu3y.png" alt="BMI kata 盛況"></p>
-<h3 id="小組任務討論"><a href="#小組任務討論" class="headerlink" title="小組任務討論"></a>小組任務討論</h3><p>  <img src="https://i.imgur.com/VkFuCpv.png" alt="小組任務討論"></p>
-<h3 id="每週二穎旻助教直播"><a href="#每週二穎旻助教直播" class="headerlink" title="每週二穎旻助教直播"></a>每週二穎旻助教直播</h3><p>  <img src="https://i.imgur.com/YiMMn1q.png" alt="每週二穎旻助教直播"></p>
-<p>還有還有，最重要的是助教回覆速度都超快，以及每日都有線上助教待命，等你問問題。</p>
+<h3 id="手機驗證"><a href="#手機驗證" class="headerlink" title="手機驗證"></a>手機驗證</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">phoneIsValid</span> (<span class="params">phone</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="regexp">/^[09]&#123;2&#125;\d&#123;8&#125;$/</span>.test(phone))&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="信箱驗證-email"><a href="#信箱驗證-email" class="headerlink" title="信箱驗證(email)"></a>信箱驗證(email)</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">emailIsValid</span> (<span class="params">email</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="regexp">/^[^\s@]+@[^\s@]+\.[^\s@]+$/</span>.test(email))&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="排列順序"><a href="#排列順序" class="headerlink" title="排列順序"></a>排列順序</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">  item.sort(<span class="function">(<span class="params">a,b</span>) =&gt;</span> b[<span class="number">1</span>] - a[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">  item.sort(<span class="function">(<span class="params">a,b</span>) =&gt;</span> b - a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>心得</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>六角學院</tag>
-        <tag>心得</tag>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -750,67 +739,6 @@
 <h2 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h2><blockquote>
 <p>先開發到客戶滿意程度，在私下重構、優化（錯誤回饋、UI 優化）⇒ 效能優化<br>零產出，比較容易做的功能先做一做<br>小步測試 ⇒ 寫開發 code ⇒ 小步測試 ⇒ 寫開發 code ⇒ 小小重構<br>tdd 測試，先寫測試 code，在寫產品 code<br>把成果文字化，寫成自己筆記</p>
 </blockquote>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>常用 Js函式庫</title>
-    <url>/2021/04/19/javascript/%E5%B8%B8%E7%94%A8-Js%E5%87%BD%E5%BC%8F%E5%BA%AB/</url>
-    <content><![CDATA[<h2 id="函式庫整理"><a href="#函式庫整理" class="headerlink" title="函式庫整理"></a>函式庫整理</h2><h3 id="千分位"><a href="#千分位" class="headerlink" title="千分位"></a>千分位</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toThousands</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> parts = x.toString().split(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">  parts[<span class="number">0</span>] = parts[<span class="number">0</span>].replace(<span class="regexp">/\B(?=(\d&#123;3&#125;)+(?!\d))/g</span>, <span class="string">&quot;,&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> parts.join(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-
-<h3 id="手機驗證"><a href="#手機驗證" class="headerlink" title="手機驗證"></a>手機驗證</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">phoneIsValid</span> (<span class="params">phone</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="regexp">/^[09]&#123;2&#125;\d&#123;8&#125;$/</span>.test(phone))&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="信箱驗證-email"><a href="#信箱驗證-email" class="headerlink" title="信箱驗證(email)"></a>信箱驗證(email)</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">emailIsValid</span> (<span class="params">email</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="regexp">/^[^\s@]+@[^\s@]+\.[^\s@]+$/</span>.test(email))&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="排列順序"><a href="#排列順序" class="headerlink" title="排列順序"></a>排列順序</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">  item.sort(<span class="function">(<span class="params">a,b</span>) =&gt;</span> b[<span class="number">1</span>] - a[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">  item.sort(<span class="function">(<span class="params">a,b</span>) =&gt;</span> b - a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>邏輯判斷之術</title>
-    <url>/2021/06/15/javascript/%E9%82%8F%E8%BC%AF%E5%88%A4%E6%96%B7%E4%B9%8B%E8%A1%93/</url>
-    <content><![CDATA[<h2 id="比較運算子、邏輯運算子"><a href="#比較運算子、邏輯運算子" class="headerlink" title="比較運算子、邏輯運算子"></a>比較運算子、邏輯運算子</h2><ul>
-<li><p>比較運算子： &gt;、&gt;=、&lt;、&lt;=、兩個 ==</p>
-</li>
-<li><p>兩個等於與三個等於的差異</p>
-</li>
-<li><p>邏輯運算子：&amp;&amp;、||</p>
-</li>
-<li><p>if：是否需要帶雨具</p>
-</li>
-<li><p>if、else if：是否滿 18 歲</p>
-</li>
-<li><p>if+變數累積：好寶寶徽章+=1</p>
-</li>
-<li><p>if、else if、else：想吃什麼東西？最後選擇到 else</p>
-</li>
-</ul>
-<h2 id="情境拆解"><a href="#情境拆解" class="headerlink" title="情境拆解"></a>情境拆解</h2><ul>
-<li><p>步驟一：定義程式目的</p>
-</li>
-<li><p>步驟二：設定初始資料狀態</p>
-</li>
-<li><p>步驟三：依照目的進行任務拆解</p>
-</li>
-<li><p>if 常用在 如果、假如、是否、判斷的情境上</p>
-</li>
-<li><p>剪刀石頭布</p>
-</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(playerA == playerB)&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">&#x27;平手&#x27;</span>)</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>((playerA == <span class="string">&#x27;石頭&#x27;</span> &amp;&amp; playerB == <span class="string">&#x27;剪刀&#x27;</span>) || (playerA == <span class="string">&#x27;剪刀&#x27;</span> &amp;&amp; playerB ==<span class="string">&#x27;布&#x27;</span>) || (playerA ==<span class="string">&#x27;布&#x27;</span> &amp;&amp; playerB ==<span class="string">&#x27;石頭&#x27;</span>))&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">&#x27;playerA win&#x27;</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">&#x27;playerB win&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>JavaScript</category>
@@ -932,6 +860,78 @@
       </categories>
       <tags>
         <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>邏輯判斷之術</title>
+    <url>/2021/06/15/javascript/%E9%82%8F%E8%BC%AF%E5%88%A4%E6%96%B7%E4%B9%8B%E8%A1%93/</url>
+    <content><![CDATA[<h2 id="比較運算子、邏輯運算子"><a href="#比較運算子、邏輯運算子" class="headerlink" title="比較運算子、邏輯運算子"></a>比較運算子、邏輯運算子</h2><ul>
+<li><p>比較運算子： &gt;、&gt;=、&lt;、&lt;=、兩個 ==</p>
+</li>
+<li><p>兩個等於與三個等於的差異</p>
+</li>
+<li><p>邏輯運算子：&amp;&amp;、||</p>
+</li>
+<li><p>if：是否需要帶雨具</p>
+</li>
+<li><p>if、else if：是否滿 18 歲</p>
+</li>
+<li><p>if+變數累積：好寶寶徽章+=1</p>
+</li>
+<li><p>if、else if、else：想吃什麼東西？最後選擇到 else</p>
+</li>
+</ul>
+<h2 id="情境拆解"><a href="#情境拆解" class="headerlink" title="情境拆解"></a>情境拆解</h2><ul>
+<li><p>步驟一：定義程式目的</p>
+</li>
+<li><p>步驟二：設定初始資料狀態</p>
+</li>
+<li><p>步驟三：依照目的進行任務拆解</p>
+</li>
+<li><p>if 常用在 如果、假如、是否、判斷的情境上</p>
+</li>
+<li><p>剪刀石頭布</p>
+</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(playerA == playerB)&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">&#x27;平手&#x27;</span>)</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>((playerA == <span class="string">&#x27;石頭&#x27;</span> &amp;&amp; playerB == <span class="string">&#x27;剪刀&#x27;</span>) || (playerA == <span class="string">&#x27;剪刀&#x27;</span> &amp;&amp; playerB ==<span class="string">&#x27;布&#x27;</span>) || (playerA ==<span class="string">&#x27;布&#x27;</span> &amp;&amp; playerB ==<span class="string">&#x27;石頭&#x27;</span>))&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">&#x27;playerA win&#x27;</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">&#x27;playerB win&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 衝刺班心得分享</title>
+    <url>/2021/04/15/%E5%BF%83%E5%BE%97/JS-%E8%A1%9D%E5%88%BA%E7%8F%AD%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB/</url>
+    <content><![CDATA[<p><img src="https://images.unsplash.com/photo-1483859562288-7f9e4c80c1cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1961&q=80" alt="os"></p>
+<h2 id="不跨出舒適圈，怎麼知道自己的極限在哪？"><a href="#不跨出舒適圈，怎麼知道自己的極限在哪？" class="headerlink" title="不跨出舒適圈，怎麼知道自己的極限在哪？"></a>不跨出舒適圈，怎麼知道自己的極限在哪？</h2><p>你有沒有跟我一樣的問題？</p>
+<p>迷茫著<br>在程式路上，如行屍走肉般</p>
+<span id="more"></span>
+
+<p>或許是沒有找到方向，那我給你跟我一樣的選擇，加入六角大家庭吧。</p>
+<p>學習過程中，不知不覺，喜歡上程式這個領域，過去一年自己總是悶著頭，一股腦兒栽在電腦前，東摸摸，西摸摸，很沒有時間觀念的學習程式，我也不知道我到底在幹嘛？<br>直到最近，我慢慢意識到我總不能無限制的自我學習，因此很果斷的加入這次的 JS 直播班。</p>
+<p>因為我知道自己有一個毛病，欠人在屁股後面追著你跑。</p>
+<h2 id="這兩個月到底學會什麼？"><a href="#這兩個月到底學會什麼？" class="headerlink" title="這兩個月到底學會什麼？"></a>這兩個月到底學會什麼？</h2><p>在這之前，已經先自己學習了 JＳ，所以一到四週基礎的課程還算好吸收，但在第五週之後，開始漸漸有難度了。</p>
+<p>第六堂：AJAX 操控伺服器之術<br>因為我對於 api 串接並沒有特別熟悉，所以就開始天天練習串接 api ，把寫法練到熟為止。課堂中，老師時常會以幽默風趣口吻，來做講解，所以偶爾能用這些零碎時間把不懂地方，馬上做即時發問。</p>
+<p>第七堂：第三方 JS 套件整合之術<br>這是我覺得這次課程中最難部分，在整合C3.js套件時，我必須先把 API 的資料做資料處理，考驗的是對於物件、陣列的整合運用。所以陣列、物件若不熟悉，沒有融會貫通，通常是會在這裡大大卡關。</p>
+<p>第八、九堂：API 講解<br>主要是對於 api 方法操控，考驗的是購物車的資料增加、刪除、修改及後端資料串接。<br>因此，只要能熟練的把 todoList 的範例，靈活寫出來，對於其他大大小小的串接專案，或許都不是問題了。</p>
+<h2 id="推薦的理由呢？"><a href="#推薦的理由呢？" class="headerlink" title="推薦的理由呢？"></a>推薦的理由呢？</h2><p>優勢在哪</p>
+<p>我想用圖片說明，可以更有信服力。</p>
+<h3 id="助教作業海…XD"><a href="#助教作業海…XD" class="headerlink" title="助教作業海…XD"></a>助教作業海…XD</h3><p>  <img src="https://i.imgur.com/fvkLhwF.png" alt="助教作業海"></p>
+<h3 id="解每日任務"><a href="#解每日任務" class="headerlink" title="解每日任務"></a>解每日任務</h3><p>  <img src="https://i.imgur.com/3FmKO1l.png" alt="解每日任務"></p>
+<h3 id="BMI-kata-盛況"><a href="#BMI-kata-盛況" class="headerlink" title="BMI kata 盛況"></a>BMI kata 盛況</h3><p>  <img src="https://i.imgur.com/elaBu3y.png" alt="BMI kata 盛況"></p>
+<h3 id="小組任務討論"><a href="#小組任務討論" class="headerlink" title="小組任務討論"></a>小組任務討論</h3><p>  <img src="https://i.imgur.com/VkFuCpv.png" alt="小組任務討論"></p>
+<h3 id="每週二穎旻助教直播"><a href="#每週二穎旻助教直播" class="headerlink" title="每週二穎旻助教直播"></a>每週二穎旻助教直播</h3><p>  <img src="https://i.imgur.com/YiMMn1q.png" alt="每週二穎旻助教直播"></p>
+<p>還有還有，最重要的是助教回覆速度都超快，以及每日都有線上助教待命，等你問問題。</p>
+]]></content>
+      <categories>
+        <category>心得</category>
+      </categories>
+      <tags>
+        <tag>六角學院</tag>
+        <tag>心得</tag>
       </tags>
   </entry>
 </search>
