@@ -1347,4 +1347,191 @@
         <tag>JavaScript</tag>
       </tags>
   </entry>
+  <entry>
+    <title>AJAX 操控伺服器之術</title>
+    <url>/2021/06/23/javascript/AJAX-%E6%93%8D%E6%8E%A7%E4%BC%BA%E6%9C%8D%E5%99%A8%E4%B9%8B%E8%A1%93/</url>
+    <content><![CDATA[<h2 id="網路請求"><a href="#網路請求" class="headerlink" title="網路請求"></a>網路請求</h2><h3 id="XHR-介紹"><a href="#XHR-介紹" class="headerlink" title="XHR 介紹"></a>XHR 介紹</h3><ul>
+<li>傳統 Ajax 指的是 XMLHttpRequest（XHR），最早出現的傳送後端請求技術，隸屬於原始js中，核心使用XMLHttpRequest物件，多個請求之間如果有先後關係的話，就會出現回撥地獄。JQuery ajax 是對原生XHR的封裝，除此以外還增添了對JSONP的支援。經過多年的更新維護，真的已經是非常的方便了。<span id="more"></span></li>
+<li>但有以下缺點：<ul>
+<li>本身是針對MVC的程式設計,不符合現在前端MVVM的浪潮</li>
+<li>基於原生的XHR開發，XHR本身的架構不清晰。</li>
+<li>JQuery整個專案太大，單純使用ajax卻要引入整個JQuery非常的不合理（採取個性化打包的方案又不能享受CDN服務）</li>
+<li>不符合關注分離（Separation of Concerns）的原則</li>
+<li>配置和呼叫方式非常混亂，而且基於事件的非同步模型不友好。</li>
+</ul>
+</li>
+</ul>
+<h3 id="axios-介紹"><a href="#axios-介紹" class="headerlink" title="axios 介紹"></a>axios 介紹</h3><ul>
+<li>套件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> list = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.list&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> url = <span class="string">`https://hexschool.github.io/ajaxHomework/data.json`</span>;</span><br><span class="line">axios.get(url).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> data = res.data[<span class="number">0</span>].name;</span><br><span class="line">    list.textContent = data;</span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Vue2.0之後，推薦大家用axios替換JQuery ajax，想必讓axios進入了很多人的目光中。axios 是一個基於Promise 用於瀏覽器和 nodejs 的 HTTP 客戶端，本質上也是對原生XHR的封裝，只不過它是Promise的實現版本，符合最新的ES規範，它本身具有以下特徵<ul>
+<li>從瀏覽器中建立 XMLHttpRequest</li>
+<li>支援 Promise API</li>
+<li>客戶端支援防止CSRF</li>
+<li>提供了一些併發請求的介面（重要，方便了很多的操作）</li>
+<li>從 node.js 建立 http 請求</li>
+<li>攔截請求和響應</li>
+<li>轉換請求和響應資料</li>
+<li>取消請求</li>
+<li>自動轉換JSON資料</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>注意：防止CSRF:就是讓你的每個請求都帶一個從cookie中拿到的key, 根據瀏覽器同源策略，假冒的網站是拿不到你cookie中得key的，這樣，後臺就可以輕鬆辨別出這個請求是否是使用者在假冒網站上的誤導輸入，從而採取正確的策略。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">axios(&#123;</span><br><span class="line">    method: <span class="string">&#x27;post&#x27;</span>,</span><br><span class="line">    url: <span class="string">&#x27;/user/1&#x27;</span>,</span><br><span class="line">    data: &#123;&#125;</span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(response);</span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="fetch-介紹"><a href="#fetch-介紹" class="headerlink" title="fetch 介紹"></a>fetch 介紹</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> list = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.list&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> url = <span class="string">`https://hexschool.github.io/ajaxHomework/data.json`</span>;</span><br><span class="line">fetch(url)</span><br><span class="line">.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> res.json();</span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function"><span class="params">myJson</span> =&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// console.log(myJson[0].name);</span></span><br><span class="line">    list.textContent = myJson[<span class="number">0</span>].name;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>fetch號稱是AJAX的替代品，是在ES6出現的，使用了ES6中的promise物件。Fetch是基於promise設計的。Fetch的程式碼結構比起ajax簡單多了，引數有點像jQuery ajax。但是，一定記住fetch不是ajax的進一步封裝，而是原生js，沒有使用XMLHttpRequest物件。 fetch的優點：<ul>
+<li>符合關注分離，沒有將輸入、輸出和用事件來跟蹤的狀態混雜在一個物件裡</li>
+<li>更好更方便的寫法 坦白說，上面的理由對我來說完全沒有什麼說服力，因為不管是Jquery還是Axios都已經幫我們把xhr封裝的足夠好，使用起來也足夠方便，為什麼我們還要花費大力氣去學習fetch？我認為fetch的優勢主要優勢就是：</li>
+<li>語法簡潔，更加語義化</li>
+<li>基於標準 Promise 實現，支援 async/await</li>
+<li>重構方便，使用 isomorphic-fetch<br>- 更加底層，提供的API豐富（request, response）</li>
+<li>脫離了XHR，是ES規範裡新的實現方式 最近在使用fetch的時候，也遇到了不少的問題：fetch是一個低層次的API，你可以把它考慮成原生的XHR，所以使用起來並不是那麼舒服，需要進行封裝。例如：</li>
+<li>fetch只對網路請求報錯，對400，500都當做成功的請求，伺服器返回 400，500 錯誤碼時並不會 reject，只有網路錯誤這些導致請求不能完成時，fetch 才會被 reject。</li>
+<li>fetch預設不會帶cookie，需要新增配置項： fetch(url, {credentials: ‘include’})</li>
+<li>fetch不支援abort，不支援超時控制，使用setTimeout及Promise.reject的實現的超時控制並不能阻止請求過程繼續在後臺執行，造成了流量的浪費</li>
+<li>fetch沒有辦法原生監測請求的進度，而XHR可以</li>
+</ul>
+</li>
+</ul>
+<h2 id="Ajax-非同步觀念"><a href="#Ajax-非同步觀念" class="headerlink" title="Ajax 非同步觀念"></a>Ajax 非同步觀念</h2><p><img src="ajax.png" alt="ajax"></p>
+<h2 id="HTTP-請求方法"><a href="#HTTP-請求方法" class="headerlink" title="HTTP 請求方法"></a>HTTP 請求方法</h2><ol>
+<li>get</li>
+<li>post<ul>
+<li>與 get 差別在於，可以傳送資料給對方，可以傳送帳號密碼到伺服器，對方會回傳我 state 200</li>
+</ul>
+</li>
+<li>delete</li>
+</ol>
+<h2 id="四種常見的-POST-請求-content-type-介紹"><a href="#四種常見的-POST-請求-content-type-介紹" class="headerlink" title="四種常見的 POST 請求 content-type 介紹"></a>四種常見的 POST 請求 content-type 介紹</h2><ol>
+<li>application/x-www-form-urlencoded</li>
+<li>application/json</li>
+<li>multipart/form-data</li>
+<li>text/plain</li>
+</ol>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><p><a href="https://www.796t.com/article.php?id=253572">文件</a></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>取得html 屬性的值及新增屬性</title>
+    <url>/2021/06/23/javascript/%E5%8F%96%E5%BE%97html-%E5%B1%AC%E6%80%A7%E7%9A%84%E5%80%BC%E5%8F%8A%E6%96%B0%E5%A2%9E%E5%B1%AC%E6%80%A7/</url>
+    <content><![CDATA[<h2 id="getAttribute-取得屬性的值"><a href="#getAttribute-取得屬性的值" class="headerlink" title="getAttribute 取得屬性的值"></a>getAttribute 取得屬性的值</h2><ol>
+<li><p>使用 getAttribute 可以回傳一個元素上的指定屬性值，語法如下:</p>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">element.getAttribute(<span class="string">&quot;屬性名稱&quot;</span>);</span><br></pre></td></tr></table></figure>
+ <span id="more"></span>
+ <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;targetId&quot;</span>&gt;</span>目標 Id<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">//</span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> element = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;#targetId&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(element.getAttribute(<span class="string">&#x27;id&#x27;</span>));</span><br><span class="line"><span class="comment">// targetId</span></span><br></pre></td></tr></table></figure></li>
+<li><p>使用 getAttribute 取用屬性時，如果指定的屬性不存在，則會回傳 null 或 “”。</p>
+ <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;targetId&quot;</span>&gt;</span>目標 Id<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> element = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;#targetId&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(element.getAttribute(<span class="string">&#x27;name&#x27;</span>));</span><br><span class="line"><span class="comment">// 由於 name 屬性不存在，因此會回傳 null</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="setAttribute-新增屬性資料"><a href="#setAttribute-新增屬性資料" class="headerlink" title="setAttribute 新增屬性資料"></a>setAttribute 新增屬性資料</h2><ol>
+<li><p>可以使用 setAttribute 替指定元素設定屬性值，語法如下</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">element.setAttribute(&quot;屬性名稱&quot;, &quot;屬性值&quot;);</span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;targetId&quot;</span>&gt;</span>目標 Id<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.colorRed</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#FF0000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> element = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;#targetId&#x27;</span>);</span><br><span class="line">element.setAttribute(<span class="string">&#x27;class&#x27;</span>, <span class="string">&#x27;colorRed&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>API 介紹</title>
+    <url>/2021/06/23/javascript/API-%E4%BB%8B%E7%B4%B9/</url>
+    <content><![CDATA[<h2 id="api"><a href="#api" class="headerlink" title="api"></a>api</h2><ul>
+<li>中文叫應用程式介面</li>
+<li>發出網路請求 web API ，獲得你要的資訊，例：<ul>
+<li>JSON：我要用 <a href="https://raw.githubusercontent.com/hexschool/js-traninging-week6API/main/data.json">BMI kaka API</a>，取得所有人的 BMI 練功資訊<span id="more"></span></li>
+<li>JSON：我要用 <a href="https://ptx.transportdata.tw/MOTC?t=Tourism&v=2#!/Tourism/TourismApi_ScenicSpot_0">MOTC API</a> 服務，取得景點資料</li>
+<li>JSON：我要<strong>申請</strong> <a href="https://newsapi.org/">NEWS API</a>，獲得相關新聞資訊</li>
+<li>介面服務：我要<strong>申請</strong> <a href="https://developers.google.com/maps/documentation/javascript/adding-a-google-map#key">Google Map</a> 服務，取得地圖資訊，<a href="https://cloud.google.com/maps-platform/pricing?hl=zh-tw">定價</a>、<a href="https://mile.cloud/zh/resources/blog/195/Google%20Maps%20Platform%20%E7%9A%84%E6%9C%80%E4%BD%B3%E5%81%9A%E6%B3%95%EF%BC%9A%E9%99%90%E5%88%B6%20API%20%E9%87%91%E9%91%B0%20">限制方式</a></li>
+<li>前後端介接：我要介接後端 API，開發前端介面功</li>
+</ul>
+</li>
+</ul>
+<h2 id="API-服務申請流程"><a href="#API-服務申請流程" class="headerlink" title="API 服務申請流程"></a>API 服務申請流程</h2><blockquote>
+<p>API 種類</p>
+</blockquote>
+<ol>
+<li>可以在瀏覽器端讀取使用，不需申請帳號：<a href="https://ptx.transportdata.tw/MOTC?t=Tourism&v=2#!/Tourism/TourismApi_ScenicSpot_0">MOTC API</a></li>
+<li>可以在瀏覽器端讀取使用，需要申請帳號獲得金鑰： <a href="https://developers.google.com/maps/documentation/javascript/adding-a-google-map#key">Google Map</a></li>
+<li>只能在<strong>後端伺服器</strong>讀取，不需申請帳號： <a href="https://data.tainan.gov.tw/dataset/tourists-statis">台南旅遊人數</a></li>
+<li>只能在<strong>後端伺服器</strong>讀取，需要申請帳號獲得金鑰： <a href="https://newsapi.org/">NEWS API</a></li>
+</ol>
+<blockquote>
+<p>1.用 text-cors 觀察是否能介接2.瀏覽器端讀取關鍵 header 參數：Access-Control-Allow-Origin: *</p>
+</blockquote>
+<h2 id="API-Key-TOKEN-夾帶送出種類"><a href="#API-Key-TOKEN-夾帶送出種類" class="headerlink" title="API Key TOKEN 夾帶送出種類"></a>API Key TOKEN 夾帶送出種類</h2><ol>
+<li>網址：例如：<a href="https://developers.google.com/maps/documentation/javascript/adding-a-google-map#key">Google Map</a>、<a href="https://newsapi.org/">NEWS API</a></li>
+<li>request header，例如：<a href="http://210.69.170.105/popendata/APP_Prog/cht/overview_cht.aspx">故宮 OPEN DATA API</a>、<a href="https://codepen.io/hexschool/pen/yLgaBWV?editors=1010">六角最終關卡管理者端 API</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>第三方 JS 套件整合之術</title>
+    <url>/2021/06/23/javascript/%E7%AC%AC%E4%B8%89%E6%96%B9-JS-%E5%A5%97%E4%BB%B6%E6%95%B4%E5%90%88%E4%B9%8B%E8%A1%93/</url>
+    <content><![CDATA[<h2 id="C3-js-圖表套件"><a href="#C3-js-圖表套件" class="headerlink" title="C3.js 圖表套件"></a>C3.js 圖表套件</h2><ol>
+<li>C3是以D3為底做出來的，先以C3為主</li>
+<li><a href="https://c3js.org/gettingstarted.html">C3官網</a> <span id="more"></span>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;!-- Load c3.css --&gt;</span><br><span class="line">    &lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.18/c3.css&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Load d3.js and c3.js --&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.18/c3.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="物件資料處理"><a href="#物件資料處理" class="headerlink" title="物件資料處理"></a>物件資料處理</h2><ol>
+<li><p>物件數據蒐集：物件計算，可計算陣列裡面各地區人數</p>
+ <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> people = [</span><br><span class="line">  &#123;</span><br><span class="line">    area:<span class="string">&quot;高雄&quot;</span>,</span><br><span class="line">    name:<span class="string">&quot;小明&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    area: <span class="string">&quot;高雄&quot;</span>,</span><br><span class="line">    name: <span class="string">&quot;小天&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    area:<span class="string">&quot;台中&quot;</span>,</span><br><span class="line">    name:<span class="string">&quot;小華&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    area: <span class="string">&quot;台北&quot;</span>,</span><br><span class="line">    name: <span class="string">&quot;小華&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"><span class="comment">// 如何轉換成以下格式，計算各地區總人數</span></span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//   高雄:2,</span></span><br><span class="line"><span class="comment">//   台中:1,</span></span><br><span class="line"><span class="comment">//   台北:1</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="keyword">let</span> total = &#123;&#125;;</span><br><span class="line">people.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item,index</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(total[item.area]==<span class="literal">undefined</span>)&#123;</span><br><span class="line">    total[item.area] = <span class="number">1</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    total[item.area] +=<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(total);</span><br></pre></td></tr></table></figure></li>
+<li><p>Object.key 做資料關聯陣列再處理</p>
+</li>
+</ol>
+<blockquote>
+<p>Object.key 用途：將所有屬性撈出來，變成一個陣列</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> totalObj = &#123;高雄: <span class="number">2</span>, 台北: <span class="number">1</span>, 台中: <span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> areaAry = <span class="built_in">Object</span>.keys(totalObj);</span><br><span class="line"><span class="comment">// area output [&quot;高雄&quot;,&quot;台北&quot;,&quot;台中&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>用途一：透過資料關聯，做物件取值</p>
+  <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> totalObj = &#123;高雄: <span class="number">2</span>, 台北: <span class="number">1</span>, 台中: <span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> areaAry = <span class="built_in">Object</span>.keys(totalObj);</span><br><span class="line"><span class="comment">// output [&quot;高雄&quot;,&quot;台北&quot;,&quot;台中&quot;]</span></span><br><span class="line">areaAry.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;item&#125;</span>有 <span class="subst">$&#123;totalObj[item]&#125;</span> 人`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li><p>用途二：重組陣列資料 I</p>
+  <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> totalObj = &#123;高雄: <span class="number">2</span>, 台北: <span class="number">1</span>, 台中: <span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> areaAry = <span class="built_in">Object</span>.keys(totalObj);</span><br><span class="line"><span class="comment">// area output [&quot;高雄&quot;,&quot;台北&quot;,&quot;台中&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> newData =[];</span><br><span class="line">areaAry.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> ary =&#123;&#125;;</span><br><span class="line">  ary.area = item;</span><br><span class="line">  ary.num = totalObj[item];</span><br><span class="line">  newData.push(ary);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newData)</span><br><span class="line"></span><br><span class="line"><span class="comment">// [object Array] (3) output</span></span><br><span class="line">[<span class="comment">// [object Object] </span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;area&quot;</span>: <span class="string">&quot;高雄&quot;</span>,</span><br><span class="line">  <span class="string">&quot;num&quot;</span>: <span class="number">2</span></span><br><span class="line">&#125;,<span class="comment">// [object Object] </span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;area&quot;</span>: <span class="string">&quot;台北&quot;</span>,</span><br><span class="line">  <span class="string">&quot;num&quot;</span>: <span class="number">1</span></span><br><span class="line">&#125;,<span class="comment">// [object Object] </span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;area&quot;</span>: <span class="string">&quot;台中&quot;</span>,</span><br><span class="line">  <span class="string">&quot;num&quot;</span>: <span class="number">1</span></span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure></li>
+<li><p>用途三：重組陣列資料 II-為 C3.js 所用</p>
+  <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> totalObj = &#123;高雄: <span class="number">2</span>, 台北: <span class="number">1</span>, 台中: <span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> areaAry = <span class="built_in">Object</span>.keys(totalObj);</span><br><span class="line"><span class="comment">// area output [&quot;高雄&quot;,&quot;台北&quot;,&quot;台中&quot;]</span></span><br><span class="line"><span class="keyword">let</span> newData = [];</span><br><span class="line">areaAry.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item,index</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> ary = [];</span><br><span class="line">  ary.push(item);</span><br><span class="line">  ary.push(totalObj[item]);</span><br><span class="line">  newData.push(ary);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(newData)</span><br><span class="line"></span><br><span class="line"><span class="comment">// c3 要的資料格式</span></span><br><span class="line"><span class="comment">//[[&quot;高雄&quot;, 2], [&quot;台北&quot;,1], [&quot;台中&quot;, 1]]</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
 </search>
